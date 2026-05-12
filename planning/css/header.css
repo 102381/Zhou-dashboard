@@ -1,0 +1,106 @@
+/* Header - Top navigation and controls */
+
+.top-header {
+  background: #000000;
+  border-bottom: 1px solid #1c1c1c;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  position: fixed;
+  top: 0;
+  left: 256px;
+  right: 0;
+  z-index: 40;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+#monthDisplay {
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #ffffff;
+  margin: 0;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.nav-btn {
+  padding: 8px;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-btn:hover {
+  background: #1c1c1c;
+  border-color: #3a3a3a;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 8px 12px;
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  outline: none;
+  width: 200px;
+  font-size: 0.95rem;
+}
+
+.search-bar input::placeholder {
+  color: #666666;
+}
+
+.search-bar span {
+  color: #666666;
+  font-size: 1.2rem;
+}
+
+.today-btn {
+  padding: 8px;
+  background: transparent;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  cursor: pointer;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.today-btn:hover {
+  background: #1c1c1c;
+  border-color: #3a3a3a;
+}

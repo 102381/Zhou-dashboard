@@ -1,0 +1,98 @@
+/* Layout - App structure and sidebar */
+
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  display: none;
+  flex-direction: column;
+  width: 256px;
+  background: #0d0d0d;
+  border-right: 1px solid #1c1c1c;
+  padding: 32px 0;
+  position: fixed;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.sidebar-branding {
+  padding: 0 32px 24px;
+  margin-bottom: 24px;
+}
+
+.sidebar-branding h1 {
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.sidebar-branding p {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #666666;
+  margin-top: 4px;
+}
+
+.sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 0 16px;
+  margin-bottom: auto;
+}
+
+.sidebar-profile {
+  padding: 24px 16px;
+  border-top: 1px solid #1c1c1c;
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #1c1c1c;
+  flex-shrink: 0;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  font-size: 0.85rem;
+}
+
+.profile-name {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 0.8rem;
+}
+
+.profile-plan {
+  color: #666666;
+  font-size: 0.75rem;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background: #000000;
+  margin-left: 0;
+  margin-top: 80px;
+}

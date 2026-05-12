@@ -1,0 +1,473 @@
+/* Responsive - Media queries for different screen sizes */
+
+@media (min-width: 768px) {
+  .sidebar {
+    display: flex;
+  }
+
+  .main-content {
+    margin-left: 256px;
+  }
+
+  .bottom-nav,
+  .fab {
+    display: none !important;
+  }
+
+  .search-bar {
+    display: flex;
+  }
+
+  .focus-section {
+    grid-template-columns: 2fr 1fr;
+  }
+}
+
+@media (max-width: 767px) {
+  .sidebar {
+    display: none;
+  }
+
+  .bottom-nav {
+    display: flex;
+  }
+
+  .fab {
+    display: flex;
+  }
+
+  .top-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 20px;
+    gap: 12px;
+  }
+
+  .header-right {
+    width: 100%;
+  }
+
+  .search-bar {
+    display: none;
+  }
+
+  .header-left {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  #monthDisplay {
+    font-size: 1.4rem;
+  }
+
+  .calendar-section {
+    padding: 16px;
+    padding-bottom: 100px;
+  }
+
+  .day {
+    min-height: 100px;
+    padding: 8px;
+    font-size: 0.85rem;
+  }
+
+  .event {
+    font-size: 0.65rem;
+    padding: 4px 6px;
+  }
+
+  .focus-section {
+    grid-template-columns: 1fr;
+    padding: 16px;
+  }
+
+  .modal {
+    width: 95vw;
+    max-width: 100%;
+  }
+
+  /* Show schedule on mobile only */
+  .schedule-section {
+    display: block;
+  }
+
+  /* Show schedule nav item on mobile */
+  .nav-item[data-view="schedule"] {
+    display: flex;
+  }
+
+  /* Schedule View - Mobile */
+  .schedule-section {
+    padding: 16px;
+  }
+
+  .schedule-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 12px;
+  }
+
+  .schedule-filters {
+    flex-direction: column;
+  }
+
+  .search-input,
+  .sort-select {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .schedule-month-section {
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .schedule-month-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    border-bottom: 1px solid #333;
+  }
+
+  .schedule-month-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .month-event-count {
+    font-size: 0.85rem;
+  }
+
+  .schedule-month-content {
+    gap: 12px;
+  }
+
+  .schedule-date-group {
+    gap: 6px;
+    padding: 0 4px;
+  }
+
+  .schedule-events {
+    gap: 4px;
+    margin-left: 8px;
+  }
+
+  .schedule-event {
+    padding: 8px 10px;
+    font-size: 0.9rem;
+    flex-wrap: wrap;
+  }
+
+  .schedule-event-content {
+    width: 100%;
+    margin-bottom: 8px;
+  }
+
+  .event-delete-btn {
+    align-self: flex-end;
+  }
+
+  /* Categories View - Mobile */
+  .categories-section {
+    padding: 16px;
+  }
+
+  .categories-header {
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 24px;
+  }
+
+  .categories-header h2 {
+    font-size: 1.5rem;
+    min-width: unset;
+  }
+
+  .btn-add-category {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .categories-list {
+    grid-template-columns: 1fr;
+  }
+
+  .category-item {
+    padding: 12px;
+  }
+
+  .category-color {
+    width: 40px;
+    height: 40px;
+  }
+
+  .category-info h3 {
+    font-size: 0.95rem;
+  }
+
+  .category-info p {
+    font-size: 0.75rem;
+  }
+
+  /* Settings View - Mobile */
+  .settings-section {
+    padding: 16px;
+  }
+
+  .settings-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+  }
+
+  .settings-group {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+
+  .settings-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .settings-item input[type="checkbox"],
+  .settings-item input[type="number"],
+  .settings-item select {
+    width: 100%;
+  }
+
+  .btn-secondary,
+  .btn-danger {
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* Day View - Mobile */
+  .day-section {
+    padding: 16px;
+  }
+
+  .day-header h2 {
+    font-size: 1.8rem;
+  }
+
+  .day-header p {
+    font-size: 1rem;
+  }
+
+  .day-events-list {
+    gap: 12px;
+  }
+
+  .day-event-item {
+    padding: 12px;
+    flex-wrap: wrap;
+  }
+
+  .day-event-content {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  /* Events View - Mobile */
+  .events-section {
+    padding: 16px;
+  }
+
+  .events-header h2 {
+    font-size: 1.5rem;
+  }
+
+  .events-list {
+    gap: 10px;
+  }
+
+  .events-list-item {
+    padding: 12px;
+    flex-wrap: wrap;
+  }
+
+  .events-list-item-content {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  /* Profile View - Mobile */
+  .profile-section {
+    padding: 16px;
+  }
+
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+  }
+
+  .profile-avatar-large {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  .profile-stats {
+    grid-template-columns: 1fr;
+  }
+
+  .stat-card {
+    padding: 12px;
+  }
+
+  .stat-value {
+    font-size: 1.5rem;
+  }
+
+  .profile-action-btn {
+    padding: 10px 14px;
+    font-size: 0.95rem;
+  }
+
+  /* Modal - Mobile */
+  .modal {
+    width: 90vw;
+    max-width: 90vw;
+  }
+
+  .modal-content {
+    padding: 16px;
+  }
+
+  .modal-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .btn-save,
+  .btn-cancel,
+  .btn-secondary,
+  .btn-danger {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Extra Small Screens */
+  .top-header {
+    padding: 12px 16px;
+  }
+
+  #monthDisplay {
+    font-size: 1.2rem;
+  }
+
+  .calendar-section {
+    padding: 12px;
+  }
+
+  .weekdays {
+    margin-bottom: 12px;
+  }
+
+  .weekdays div {
+    font-size: 0.7rem;
+  }
+
+  .day {
+    min-height: 80px;
+    padding: 6px;
+  }
+
+  .nav-buttons {
+    gap: 4px;
+  }
+
+  .nav-btn {
+    padding: 6px;
+  }
+
+  .bottom-nav-item {
+    font-size: 0.6rem;
+  }
+
+  .fab {
+    width: 48px;
+    height: 48px;
+    bottom: 72px;
+    right: 16px;
+  }
+
+  .schedule-section {
+    padding: 12px;
+  }
+
+  .schedule-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .schedule-month-header h2 {
+    font-size: 1.1rem;
+  }
+
+  .schedule-event {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+
+  .categories-header h2 {
+    font-size: 1.25rem;
+  }
+
+  .categories-list {
+    gap: 16px;
+  }
+
+  .category-item {
+    gap: 12px;
+  }
+
+  .settings-container h2 {
+    font-size: 1.25rem;
+  }
+
+  .settings-group {
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+
+  .settings-group h3 {
+    font-size: 1rem;
+  }
+
+  /* Modal Extra Small */
+  .modal {
+    width: 95vw;
+    max-width: 95vw;
+  }
+
+  .modal h2 {
+    font-size: 1rem;
+    padding: 16px;
+  }
+
+  .modal-content {
+    padding: 12px;
+    gap: 12px;
+  }
+
+  #eventTitleInput {
+    padding: 10px;
+    font-size: 0.9rem;
+  }
+
+  .btn-save,
+  .btn-cancel,
+  .btn-secondary,
+  .btn-danger {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 768px) {
+    .nav-item[data-view="schedule"] {
+      display: flex;
+    }
+  }
+}

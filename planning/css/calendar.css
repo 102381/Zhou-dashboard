@@ -1,0 +1,95 @@
+/* Calendar - Grid, days, weekdays display */
+
+.calendar-section {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #1c1c1c;
+}
+
+.weekdays div {
+  text-align: center;
+  font-weight: 600;
+  color: #666666;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 12px 0;
+}
+
+#calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.day {
+  min-height: 120px;
+  padding: 12px;
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.day.today {
+  background: #2a3f5f;
+  border: 2px solid #4a7ba7;
+  box-shadow: 0 0 8px rgba(74, 123, 167, 0.3);
+}
+
+.day:hover:not(.padding) {
+  border-color: #3a3a3a;
+  background: #2a2a2a;
+}
+
+.day.padding {
+  background: #0d0d0d;
+  border-color: #0d0d0d;
+  cursor: default;
+  opacity: 0.3;
+}
+
+.event {
+  font-size: 0.7rem;
+  padding: 6px 8px;
+  background: #333333;
+  color: #ffffff;
+  border-radius: 2px;
+  margin-top: 6px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.event:hover {
+  background: #444444;
+}
+
+.event.vacation {
+  background: #ff9800;
+  color: #000000;
+}
+
+.event.vacation:hover {
+  background: #f57c00;
+}

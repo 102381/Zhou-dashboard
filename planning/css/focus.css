@@ -1,0 +1,94 @@
+/* Focus - Focus cards and metrics display */
+
+.focus-section {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  padding: 30px;
+  padding-top: 0;
+  margin-top: auto;
+}
+
+.focus-card {
+  background: #1c1c1c;
+  border: 1px solid #2a2a2a;
+  border-radius: 4px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.focus-main h3,
+.focus-insights h3 {
+  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
+
+.focus-main p,
+.focus-insights p {
+  font-size: 0.9rem;
+  color: #999999;
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.focus-metrics {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.metric-box {
+  background: #2a2a2a;
+  padding: 12px;
+  border-radius: 4px;
+}
+
+.metric-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #666666;
+  display: block;
+  margin-bottom: 4px;
+}
+
+.metric-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.focus-insights {
+  position: relative;
+  overflow: hidden;
+}
+
+.insights-icon {
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.insights-btn {
+  margin-top: auto;
+  padding: 8px 0;
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.2);
+  text-underline-offset: 4px;
+  transition: all 0.3s ease;
+}
+
+.insights-btn:hover {
+  text-decoration-color: #ffffff;
+}
