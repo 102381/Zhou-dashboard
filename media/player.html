@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Nexus | Zhou Audio Player</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+                                                                                                                                                    <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "primary": "#b8c3ff",
+                        "on-tertiary-fixed-variant": "#574425",
+                        "tertiary-fixed-dim": "#dec29a",
+                        "on-primary-fixed": "#131b2e",
+                        "secondary-fixed-dim": "#b7c8e1",
+                        "error": "#ba1a1a",
+                        "surface-dim": "#d8dadc",
+                        "on-secondary": "#ffffff",
+                        "surface-tint": "#565e74",
+                        "error-container": "#ffdad6",
+                        "on-secondary-container": "#54647a",
+                        "surface-variant": "#e0e3e5",
+                        "on-primary": "#ffffff",
+                        "primary-fixed": "#dae2fd",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container": "#eceef0",
+                        "primary-container": "#131b2e",
+                        "on-surface-variant": "#45464d",
+                        "on-secondary-fixed": "#0b1c30",
+                        "tertiary": "#000000",
+                        "on-tertiary-fixed": "#271901",
+                        "on-secondary-fixed-variant": "#38485d",
+                        "on-background": "#191c1e",
+                        "on-error": "#ffffff",
+                        "on-primary-container": "#7c839b",
+                        "outline-variant": "#c6c6cd",
+                        "secondary-container": "#d0e1fb",
+                        "on-error-container": "#93000a",
+                        "surface-container-lowest": "#ffffff",
+                        "tertiary-fixed": "#fcdeb5",
+                        "secondary": "#505f76",
+                        "surface": "#f7f9fb",
+                        "on-tertiary-container": "#98805d",
+                        "background": "#f7f9fb",
+                        "inverse-primary": "#bec6e0",
+                        "secondary-fixed": "#e9ddff",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed-variant": "#3f465c",
+                        "surface-container-highest": "#e0e3e5",
+                        "inverse-on-surface": "#eff1f3",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-surface": "#2d3133",
+                        "surface-container-high": "#e6e8ea",
+                        "outline": "#76777d",
+                        "primary-fixed-dim": "#bec6e0",
+                        "tertiary-container": "#271901"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "touch-target-min": "48px",
+                        "bento-gap": "1.5rem",
+                        "card-internal-padding": "2rem",
+                        "container-padding": "2rem",
+                        "base": "8px"
+                    },
+                    "fontFamily": {
+                        "display": ["Atkinson Hyperlegible Next", "sans-serif"],
+                        "h1": ["Atkinson Hyperlegible Next", "sans-serif"],
+                        "h2": ["Atkinson Hyperlegible Next", "sans-serif"],
+                        "body-lg": ["Atkinson Hyperlegible Next", "sans-serif"],
+                        "body-md": ["Atkinson Hyperlegible Next", "sans-serif"],
+                        "label-caps": ["Atkinson Hyperlegible Next", "sans-serif"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .radial-blur {
+            background: radial-gradient(circle at 50% 50%, rgba(184, 195, 255, 0.08) 0%, rgba(247, 249, 251, 0) 70%);
+        }
+        .player-container {
+            max-width: 800px;                                                       
+            width: 100%;
+            margin: 0 auto;
+        }
+        .album-art-shadow {
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-primary-container min-h-screen radial-blur">
+<!-- Top Navigation Bar -->
+<header class="fixed top-0 left-0 right-0 z-50 flex justify-between items-center w-full px-container-padding h-touch-target-min bg-surface/80 backdrop-blur-md border-b border-outline-variant">
+<div class="flex items-center gap-4">
+<span class="font-h2 text-h2 font-bold text-on-surface">SYSTEM NEXUS</span>
+</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1" href="">Movies</a>
+<a class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1" href="#">TV Shows</a>
+<a class="text-primary font-bold border-b-2 border-primary px-2 py-1" href="#">Audio</a>
+</div>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-on-surface-variant">sensors</span>
+<span class="material-symbols-outlined text-on-surface-variant">wifi</span>
+<span class="material-symbols-outlined text-on-surface-variant">battery_full</span>
+</div>
+</header>
+
+<!-- Side Navigation Bar -->
+<nav class="fixed left-0 top-0 h-full flex flex-col py-8 px-4 z-40 bg-surface-container-low border-r border-outline-variant w-64 pt-20">
+<div class="mb-8 px-4">
+<h1 class="font-h2 text-h2 font-black text-primary">MAIN TERMINAL</h1>
+<p class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant">v0.1.0 Active</p>
+</div>
+<div class="flex flex-col gap-2 flex-grow">
+<a class="flex items-center gap-4 text-on-primary-container rounded-lg p-4 font-bold active:scale-95 transition-transform duration-150" href="../main/index.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-secondary p-4 hover:bg-surface-variant hover:text-primary rounded-lg transition-all active:scale-95" href="../planning/index.html">
+<span class="material-symbols-outlined" data-icon="calendar_today">calendar_today</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">Agenda</span>
+</a>
+
+<a class="flex items-center gap-4 bg-primary-container text-secondary p-4 hover:bg-surface-variant hover:text-primary rounded-lg transition-all active:scale-95" href="../media/player.html">
+<span class="material-symbols-outlined" data-icon="play_circle">play_circle</span>
+<span class="font-label-caps text-label-caps uppercase tracking-widest">Media</span>
+</a>
+</div>
+<div class="flex flex-col gap-2 pt-4 border-t border-outline-variant">
+
+</div>
+</nav>
+<!-- Main Content Area: Zhou Audio Player Experience -->
+<main class="ml-64 pt-28 pb-24 min-h-screen px-container-padding flex flex-col items-center justify-center">
+<div class="player-container flex flex-col items-center space-y-12">
+<!-- Large Album Art Section -->
+<div class="relative w-full aspect-square max-w-[480px] rounded-[32px] overflow-hidden album-art-shadow group">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" id="song-image" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtQl7-5SSjs0kD_CU1TJq6gi0SDy2STP48WkyWynk2MFJ8wBICuOxgMkfHg6xcg9858pQjNR2btPmCeK4UgcCEkgkaiw3RT9rPd3xJjgYhuBOk9lMQfqnB6Cspb8m2RppFenoQrgFOnP3X3VQGPeLChMQq6ZUPShd4CUT57TcyeWYKOyBQtsEisqCErAHrf7gkOxDPBbEUaPqSjIzIeTKBGvPB6rGEiZd1Zs0FjPRLE5QYvWJWTQowtCZHeKy6Z7mR9JJOm172fRl3"/>
+<div class="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center backdrop-blur-sm">
+<span class="material-symbols-outlined text-white text-6xl opacity-80">graphic_eq</span>
+</div>
+</div>
+<!-- Track Info -->
+<div class="text-center space-y-2">
+<h2 class="text-4xl font-bold tracking-tight text-on-surface" id="song-name">Midnight Resonance</h2>
+<p class="text-xl text-primary font-medium" id="song-artist">Aether Velocity</p>
+</div>
+<!-- Custom Seek Bar -->
+<div class="w-full space-y-2">
+<div class="flex justify-between text-xs font-bold text-on-surface-variant uppercase tracking-widest">
+<span id="current-time">0:00</span>
+<span id="total-time">0:00</span>
+</div>
+<input type="range" min="0" max="100" value="0" id="song-slider" class="w-full h-1.5 bg-surface-container rounded-full cursor-pointer appearance-none" style="accent-color: #b8c3ff;"/>
+</div>
+<!-- Playback Controls -->
+<div class="flex items-center justify-between w-full max-w-sm">
+<button class="text-on-surface-variant hover:text-primary transition-colors" id="shuffle-song">
+<span class="material-symbols-outlined text-3xl">shuffle</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors" id="prev-button">
+<span class="material-symbols-outlined text-4xl">skip_previous</span>
+</button>
+<button class="w-20 h-20 bg-primary text-primary-container rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all" id="playpause-button">
+<span class="material-symbols-outlined text-5xl" style="font-variation-settings: 'FILL' 1;">pause</span>
+</button>
+<button class="text-on-surface hover:text-primary transition-colors" id="next-button">
+<span class="material-symbols-outlined text-4xl">skip_next</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors" id="repeat-song">
+<span class="material-symbols-outlined text-3xl">repeat</span>
+</button>
+</div>
+<!-- Secondary Controls -->
+<div class="flex items-center gap-8 text-on-surface-variant">
+<div class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant">
+<span class="material-symbols-outlined text-xl">volume_up</span>
+<div class="w-24 h-1 bg-outline-variant rounded-full overflow-hidden">
+<div class="h-full bg-on-surface-variant w-[75%]"></div>
+</div>
+</div>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined">favorite</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined">queue_music</span></button>
+<button class="hover:text-primary transition-colors"><span class="material-symbols-outlined">share</span></button>
+</div>
+</div>
+</main>
+</body>
+<script src="./js/player.js"></script>
+</html>
+
