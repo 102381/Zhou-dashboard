@@ -1,43 +1,47 @@
-<!DOCTYPE html>
-                          <html lang="en">
+<!doctype html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Zhou Calendar</title>
+    <title>System Nexus | Planning</title>
     <link rel="stylesheet" href="./css/main.css" />
     <link rel="icon" type="image/x-icon" href="./css/images/zhou.svg" />
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
   </head>
   <body>
-
     <!-- Main Nexus Sidebar -->
-    <nav style="position: fixed; left: 0; top: 0; height: 100%; display: flex; flex-direction: column; padding: 32px 16px; z-index: 40; background: #f2f4f6; border-right: 1px solid #c6c6cd; width: 256px; padding-top: 80px;">
-      <div style="margin-bottom: 32px; padding: 0 16px;">
-        <h1 style="font-size: 1.75rem; font-weight: 900; color: #000; margin: 0;">MAIN TERMINAL</h1>
-        <p style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; color: #79747e; margin: 0; margin-top: 4px;">v0.1.0 Active</p>
+    <nav class="sidebar">
+      <div class="sidebar-branding">
+        <h1>MAIN TERMINAL</h1>
+        <p>v0.1.0 Active</p>
       </div>
-      <div style="display: flex; flex-direction: column; gap: 8px; flex-grow: 1;">
-        <a href="../main/index.html" style="display: flex; align-items: center; gap: 16px; color: #7c839b; border-radius: 8px; padding: 16px; font-weight: 700; text-decoration: none;">
-          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">dashboard</span>
-          <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Dashboard</span>
+      <div class="sidebar-nav">
+        <a href="../main/index.html" class="nav-item">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
         </a>
-        <a href="../planning/index.html" style="display: flex; align-items: center; gap: 16px; background: #131b2e; color: #505f76; padding: 16px; border-radius: 8px; text-decoration: none;">
-          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">calendar_today</span>
-          <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Agenda</span>
+        <a href="../planning/index.html" class="nav-item active">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <span>Agenda</span>
         </a>
-        <a href="../media/player.html" style="display: flex; align-items: center; gap: 16px; color: #505f76; padding: 16px; border-radius: 8px; text-decoration: none; background: transparent;">
-          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">play_circle</span>
-          <span style="font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;">Media</span>
+        <a href="../media/player.html" class="nav-item">
+          <span class="material-symbols-outlined">play_circle</span>
+          <span>Media</span>
         </a>
       </div>
     </nav>
-    
-    <div class="app-layout" style="margin-left: 256px; margin-top: 64px;">
-  
-      <aside class="sidebar">
+
+    <div class="app-layout">
+      <aside class="planner-sidebar">
         <div class="sidebar-branding">
-          <h1>Zhou Calendar</h1>                                                                                                                              
+          <h1>Zhou Calendar</h1>
         </div>
         <button class="new-event-btn">
           <span class="material-symbols-outlined">add</span>
@@ -76,7 +80,7 @@
         <header class="top-header">
           <div class="header-left">
             <h2 id="monthDisplay"></h2>
-            <p id="currentDayDisplay" style="color: #888; font-size: 0.875rem; margin: 4px 0 0 0;"></p>
+            <p id="currentDayDisplay"></p>
             <div class="nav-buttons">
               <button id="backButton" class="nav-btn">
                 <span class="material-symbols-outlined">chevron_left</span>
@@ -114,7 +118,10 @@
           <div class="focus-card focus-main">
             <div>
               <h3>Upcoming Focus</h3>
-              <p>Your most intense week of the month starts on the 15th with high-priority tasks.</p>
+              <p>
+                Your most intense week of the month starts on the 15th with
+                high-priority tasks.
+              </p>
             </div>
             <div class="focus-metrics">
               <div class="metric-box">
@@ -128,8 +135,7 @@
             </div>
           </div>
           <div class="focus-card focus-insights">
-            <div class="insights-icon">
-            </div>
+            <div class="insights-icon"></div>
             <h3>Digital Curator</h3>
             <p>October trends show high productivity in mornings.</p>
             <button class="insights-btn">View Insights</button>
@@ -137,11 +143,19 @@
         </section>
 
         <!-- Schedule View -->
-        <section class="schedule-section view-container hidden" id="schedule-view">
+        <section
+          class="schedule-section view-container hidden"
+          id="schedule-view"
+        >
           <div class="schedule-header">
             <h2>Event Schedule</h2>
             <div class="schedule-filters">
-              <input type="text" id="scheduleSearch" placeholder="Search events..." class="search-input" />
+              <input
+                type="text"
+                id="scheduleSearch"
+                placeholder="Search events..."
+                class="search-input"
+              />
               <select id="scheduleSort" class="sort-select">
                 <option value="date">Sort by Date</option>
                 <option value="name">Sort by Name</option>
@@ -153,7 +167,10 @@
         </section>
 
         <!-- Categories View -->
-        <section class="categories-section view-container hidden" id="categories-view">
+        <section
+          class="categories-section view-container hidden"
+          id="categories-view"
+        >
           <div class="categories-header">
             <h2>Event Categories</h2>
             <button id="addCategoryBtn" class="btn-add-category">
@@ -162,23 +179,32 @@
             </button>
           </div>
           <div id="categoriesList" class="categories-list"></div>
-          
+
           <!-- Add Category Modal -->
           <div id="categoryModal" class="modal hidden">
             <h2>New Category</h2>
             <div class="modal-content">
-              <input type="text" id="categoryNameInput" placeholder="Category Name" />
+              <input
+                type="text"
+                id="categoryNameInput"
+                placeholder="Category Name"
+              />
               <input type="color" id="categoryColorInput" value="#ffffff" />
               <div class="modal-actions">
                 <button id="saveCategoryBtn" class="btn-save">Save</button>
-                <button id="cancelCategoryBtn" class="btn-cancel">Cancel</button>
+                <button id="cancelCategoryBtn" class="btn-cancel">
+                  Cancel
+                </button>
               </div>
             </div>
           </div>
         </section>
 
         <!-- Settings View -->
-        <section class="settings-section view-container hidden" id="settings-view">
+        <section
+          class="settings-section view-container hidden"
+          id="settings-view"
+        >
           <div class="settings-container">
             <h2>Settings</h2>
 
@@ -190,7 +216,13 @@
               </div>
               <div class="settings-item">
                 <label for="reminderTime">Reminder Time (minutes before)</label>
-                <input type="number" id="reminderTime" value="15" min="0" max="1440" />
+                <input
+                  type="number"
+                  id="reminderTime"
+                  value="15"
+                  min="0"
+                  max="1440"
+                />
               </div>
             </div>
 
@@ -230,14 +262,22 @@
           <div class="events-header">
             <h2>All Events</h2>
             <div class="events-filters">
-              <input type="text" id="eventsSearch" placeholder="Search events..." class="search-input" />
+              <input
+                type="text"
+                id="eventsSearch"
+                placeholder="Search events..."
+                class="search-input"
+              />
             </div>
           </div>
           <div id="eventsList" class="events-list"></div>
         </section>
 
         <!-- Profile View -->
-        <section class="profile-section view-container hidden" id="profile-view">
+        <section
+          class="profile-section view-container hidden"
+          id="profile-view"
+        >
           <div class="profile-container">
             <div class="profile-header">
               <div class="profile-avatar-large">
@@ -270,7 +310,10 @@
                 <span class="material-symbols-outlined">settings</span>
                 Settings
               </button>
-              <button class="profile-action-btn" onclick="showView('categories')">
+              <button
+                class="profile-action-btn"
+                onclick="showView('categories')"
+              >
                 <span class="material-symbols-outlined">label</span>
                 Categories
               </button>
@@ -285,7 +328,7 @@
           <span>Day</span>
         </a>
         <a href="#" class="bottom-nav-item active" data-view="months">
-          <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">grid_view</span>
+          <span class="material-symbols-outlined filled">grid_view</span>
           <span>Month</span>
         </a>
         <a href="#" class="bottom-nav-item" data-view="events">
