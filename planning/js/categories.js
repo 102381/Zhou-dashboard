@@ -24,8 +24,25 @@ function saveCategoriesToStorage() {
   localStorage.setItem("categories", JSON.stringify(categories));
 }
 
+function generateCategoryId(name) {
+  const baseId = name
+    .toLowerCase()
+    .trim()
+    .replace(/\s+/g, "-")
+    .replace(/[^a-z0-9-]/g, "");
+  let id = baseId || "category";
+  let suffix = 2;
+
+  while (categories.some((category) => category.id === id)) {
+    id = `${baseId || "category"}-${suffix}`;
+    suffix += 1;
+  }
+
+  return id;
+}
+
 function addCategory(name, color) {
-  const id = name.toLowerCase().replace(/\s+/g, "-");
+  const id = generateCategoryId(name);
   categories.push({
     id,
     name,
@@ -127,9 +144,13 @@ function editCategory(categoryId) {
 function openAddCategoryModal() {
   const modal = document.getElementById("categoryModal");
   const nameInput = document.getElementById("categoryNameInput");
+  const colorInput = document.getElementById("categoryColorInput");
 
   nameInput.value = "";
-  nameInput.dataset.categoryId = null;
+  nameInput.dataset.categoryId = "";
+  if (colorInput) {
+    colorInput.value = "#ffffff";
+  }
 
   if (modal) {
     modal.classList.remove("hidden");
@@ -147,9 +168,10 @@ function closeCategoryModal() {
 function saveCategoryModal() {
   const nameInput = document.getElementById("categoryNameInput");
   const colorInput = document.getElementById("categoryColorInput");
-  const categoryId = nameInput.dataset.categoryId;
+  const categoryId = (nameInput.dataset.categoryId || "").trim();
+  const categoryName = nameInput.value.trim();
 
-  if (!nameInput.value.trim()) {
+  if (!categoryName) {
     alert("Please enter a category name");
     return;
   }
@@ -158,12 +180,12 @@ function saveCategoryModal() {
     // Edit existing
     const category = categories.find((c) => c.id === categoryId);
     if (category) {
-      category.name = nameInput.value;
+      category.name = categoryName;
       category.color = colorInput.value;
     }
   } else {
     // Add new
-    addCategory(nameInput.value, colorInput.value);
+    addCategory(categoryName, colorInput.value);
   }
 
   closeCategoryModal();
