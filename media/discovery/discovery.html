@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zhou Audio Discovery</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/discovery.css" />
+  </head>
+  <body>
+    <div class="page">
+      <aside class="side">
+        <div class="brand">
+          <h1>MAIN TERMINAL</h1>
+          <p>v0.1.0 Active</p>
+        </div>
+        <nav class="nav" aria-label="Media sections">
+          <a href="../player.html">Media</a>
+          <a class="active" href="./discovery.html" aria-current="page"
+            >Discovery</a
+          >
+        </nav>
+        <div class="profile">Album browser for quick category picking.</div>
+      </aside>
+
+      <main class="content">
+        <section class="hero">
+          <div class="hero-top">
+            <div>
+              <h2>Discover albums by category</h2>
+              <p>
+                Browse the collection, switch categories, and open the album you
+                want. The layout keeps the same calm surface and strong contrast
+                used in the player.
+              </p>
+            </div>
+            <a class="hero-link" href="../player.html">Open player</a>
+          </div>
+        </section>
+
+        <section class="filters" aria-label="Album categories">
+          <button class="filter-btn active" type="button" data-category="all">
+            All
+          </button>
+          <button class="filter-btn" type="button" data-category="chill">
+            Chill
+          </button>
+          <button class="filter-btn" type="button" data-category="focus">
+            Focus
+          </button>
+          <button class="filter-btn" type="button" data-category="night">
+            Night
+          </button>
+          <button class="filter-btn" type="button" data-category="retro">
+            Retro
+          </button>
+        </section>
+
+        <section class="section-title">
+          <div>
+            <h3>Featured albums</h3>
+            <p id="album-count">Showing 6 albums</p>
+          </div>
+        </section>
+
+        <section class="grid" id="album-grid">
+          <article class="album-card" data-category="chill">
+            <div class="cover">
+              <img
+                src="../css/audio/cover/luther-cover.jpg"
+                alt="Midnight Resonance cover"
+              />
+            </div>
+            <div class="card-body">
+              <h4>Midnight Resonance</h4>
+              <p>Aether Velocity</p>
+              <div class="card-row">
+                <div class="badge">Chill</div>
+                <div class="open-btn">Open album</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="album-card" data-category="focus">
+            <div class="cover fallback">Signal Lines</div>
+            <div class="card-body">
+              <h4>Signal Lines</h4>
+              <p>North Desk</p>
+              <div class="card-row">
+                <div class="badge">Focus</div>
+                <div class="open-btn">Open album</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="album-card" data-category="night">
+            <div
+              class="cover fallback"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #2d3133 0%,
+                  #565e74 50%,
+                  #b8c3ff 100%
+                );
+              "
+            >
+              After Hours
+            </div>
+            <div class="card-body">
+              <h4>After Hours</h4>
+              <p>Low Moon</p>
+              <div class="card-row">
+                <div class="badge">Night</div>
+                <div class="open-btn">Open album</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="album-card" data-category="retro">
+            <div
+              class="cover fallback"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #dec29a 0%,
+                  #7c839b 50%,
+                  #131b2e 100%
+                );
+              "
+            >
+              Tape Loop
+            </div>
+            <div class="card-body">
+              <h4>Tape Loop</h4>
+              <p>Analog State</p>
+              <div class="card-row">
+                <div class="badge">Retro</div>
+                <div class="open-btn">Open album</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="album-card" data-category="chill">
+            <div
+              class="cover fallback"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #e6e8ea 0%,
+                  #b8c3ff 60%,
+                  #131b2e 100%
+                );
+              "
+            >
+              Soft Radius
+            </div>
+            <div class="card-body">
+              <h4>Soft Radius</h4>
+              <p>Blue Window</p>
+              <div class="card-row">
+                <div class="badge">Chill</div>
+                <div class="open-btn">Open album</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="album-card" data-category="focus">
+            <div
+              class="cover fallback"
+              style="
+                background: linear-gradient(
+                  135deg,
+                  #131b2e 0%,
+                  #45464d 55%,
+                  #d0e1fb 100%
+                );
+              "
+            >
+              Clear Grid
+            </div>
+            <div class="card-body">
+              <h4>Clear Grid</h4>
+              <p>Frame Runner</p>
+              <div class="card-row">
+                <div class="badge">Focus</div>
+                <div class="open-btn">Open album</div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <script src="../js/discovery.js"></script>
+  </body>
+</html>
