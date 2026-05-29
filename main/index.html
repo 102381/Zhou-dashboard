@@ -19,7 +19,6 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="../planning/css/system-theme.css" />
     <style>
       .material-symbols-outlined {
         font-variation-settings:
@@ -136,31 +135,60 @@
     </script>
   </head>
   <body class="bg-background text-on-background min-h-screen">
-    <!-- TopAppBar -->
-    <!-- SideNavBar (unified with planning style) -->
-    <nav class="sidebar">
-      <div class="sidebar-branding">
-        <h1>MAIN TERMINAL</h1>
-        <p>v0.1.0 Active</p>
+    <!-- SideNavBar -->
+    <nav
+      class="fixed left-0 top-0 h-full flex flex-col py-8 px-4 z-40 bg-surface-container-low border-r border-outline-variant w-64 pt-20"
+    >
+      <div class="mb-8 px-4">
+        <h1 class="font-h2 text-h2 font-black text-primary">MAIN TERMINAL</h1>
+        <p
+          class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant"
+        >
+          v0.1.0 Active
+        </p>
       </div>
-      <div class="sidebar-nav site-nav">
-        <a href="../main/index.html" class="site-nav-link active">
-          <span class="material-symbols-outlined">dashboard</span>
-          <span>Dashboard</span>
+      <div class="flex flex-col gap-2 flex-grow">
+        <a
+          class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-lg p-4 font-bold active:scale-95 transition-transform duration-150"
+          href="../main/index.html"
+        >
+          <span class="material-symbols-outlined" data-icon="dashboard"
+            >dashboard</span
+          >
+          <span
+            class="font-label-caps text-label-caps uppercase tracking-widest"
+            >Dashboard</span
+          >
         </a>
         <a
+          class="flex items-center gap-4 text-secondary p-4 hover:bg-surface-variant hover:text-primary rounded-lg transition-all active:scale-95"
           href="../planning/index.html"
-          class="site-nav-link"
-          aria-current="page"
         >
-          <span class="material-symbols-outlined">calendar_today</span>
-          <span>Agenda</span>
+          <span class="material-symbols-outlined" data-icon="calendar_today"
+            >calendar_today</span
+          >
+          <span
+            class="font-label-caps text-label-caps uppercase tracking-widest"
+            >Agenda</span
+          >
         </a>
-        <a href="../media/player.html" class="site-nav-link">
-          <span class="material-symbols-outlined">play_circle</span>
-          <span>Media</span>
+
+        <a
+          class="flex items-center gap-4 text-secondary p-4 hover:bg-surface-variant hover:text-primary rounded-lg transition-all active:scale-95"
+          href="../media/player.html"
+        >
+          <span class="material-symbols-outlined" data-icon="play_circle"
+            >play_circle</span
+          >
+          <span
+            class="font-label-caps text-label-caps uppercase tracking-widest"
+            >Media</span
+          >
         </a>
       </div>
+      <div
+        class="flex flex-col gap-2 pt-4 border-t border-outline-variant"
+      ></div>
     </nav>
     <!-- Main Canvas -->
     <main class="ml-64 pt-24 p-8 min-h-screen">
