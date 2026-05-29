@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html class="light" lang="en">
   <head>
@@ -21,17 +21,36 @@
     />
     <style>
       .material-symbols-outlined {
-        font-variation-settings:
-          "FILL" 0,
-          "wght" 400,
-          "GRAD" 0,
-          "opsz" 24;
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
       }
       body {
         font-family: "Atkinson Hyperlegible Next", sans-serif;
         -webkit-font-smoothing: antialiased;
       }
+
+      .sidebar-branding {
+        padding: 0 32px 24px;
+        margin-bottom: 24px;
+      }
+
+      .sidebar-branding h1 {
+        font-family: "Atkinson Hyperlegible Next", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+        color: #ffffff;
+      }
+
+      .sidebar-branding p {
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #666666;
+        margin-top: 4px;
+      }
     </style>
+    <link rel="stylesheet" href="./css/sidebar.css" />
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -135,61 +154,41 @@
     </script>
   </head>
   <body class="bg-background text-on-background min-h-screen">
-    <!-- SideNavBar -->
-    <nav
-      class="fixed left-0 top-0 h-full flex flex-col py-8 px-4 z-40 bg-surface-container-low border-r border-outline-variant w-64 pt-20"
-    >
-      <div class="mb-8 px-4">
-        <h1 class="font-h2 text-h2 font-black text-primary">MAIN TERMINAL</h1>
-        <p
-          class="font-label-caps text-label-caps uppercase tracking-widest text-on-surface-variant"
-        >
-          v0.1.0 Active
-        </p>
+    <!-- Main Nexus Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-branding">
+        <h1>MAIN TERMINAL</h1>
+        <p>v0.1.0 Active</p>
       </div>
-      <div class="flex flex-col gap-2 flex-grow">
+      <div class="sidebar-nav site-nav">
         <a
-          class="flex items-center gap-4 bg-primary-container text-on-primary-container rounded-lg p-4 font-bold active:scale-95 transition-transform duration-150"
           href="../main/index.html"
+          class="site-nav-link active"
+          aria-current="page"
         >
-          <span class="material-symbols-outlined" data-icon="dashboard"
-            >dashboard</span
-          >
-          <span
-            class="font-label-caps text-label-caps uppercase tracking-widest"
-            >Dashboard</span
-          >
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
         </a>
-        <a
-          class="flex items-center gap-4 text-secondary p-4 hover:bg-surface-variant hover:text-primary rounded-lg transition-all active:scale-95"
-          href="../planning/index.html"
-        >
-          <span class="material-symbols-outlined" data-icon="calendar_today"
-            >calendar_today</span
-          >
-          <span
-            class="font-label-caps text-label-caps uppercase tracking-widest"
-            >Agenda</span
-          >
+        <a href="../planning/index.html" class="site-nav-link">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <span>Agenda</span>
         </a>
-
-        <a
-          class="flex items-center gap-4 text-secondary p-4 hover:bg-surface-variant hover:text-primary rounded-lg transition-all active:scale-95"
-          href="../media/player.html"
-        >
-          <span class="material-symbols-outlined" data-icon="play_circle"
-            >play_circle</span
-          >
-          <span
-            class="font-label-caps text-label-caps uppercase tracking-widest"
-            >Media</span
-          >
+        <a href="../media/player.html" class="site-nav-link">
+          <span class="material-symbols-outlined">play_circle</span>
+          <span>Media</span>
         </a>
       </div>
-      <div
-        class="flex flex-col gap-2 pt-4 border-t border-outline-variant"
-      ></div>
+
+      <div class="sidebar-profile" style="margin-top: 14px">
+        <div class="profile-avatar">
+          <img src="" alt="temp" />
+        </div>
+        <div class="profile-info">
+          <span class="profile-name">temp</span>
+        </div>
+      </div>
     </nav>
+
     <!-- Main Canvas -->
     <main class="ml-64 pt-24 p-8 min-h-screen">
       <div class="max-w-7xl mx-auto">
@@ -500,7 +499,7 @@
                     <span
                       class="material-symbols-outlined text-white text-[48px] cursor-pointer"
                       data-icon="play_circle"
-                      style="font-variation-settings: &quot;FILL&quot; 1"
+                      style="font-variation-settings: 'FILL' 1"
                       >play_circle</span
                     >
                   </div>
@@ -545,64 +544,6 @@
                   </div>
                 </div>
               </div>
-            </div>
-          </section>
-
-          <!-- Quick Actions (Span 4) -->
-          <section
-            class="col-span-12 lg:col-span-4 bg-primary text-white rounded-[24px] p-card-internal-padding shadow-2xl"
-          >
-            <h3
-              class="font-label-caps text-label-caps uppercase tracking-widest text-on-primary-container mb-6"
-            >
-              Critical Actions
-            </h3>
-            <div class="grid grid-cols-1 gap-4">
-              <button
-                class="flex items-center justify-between p-4 rounded-xl border-2 border-white/20 hover:bg-white/10 transition-colors group"
-              >
-                <div class="flex items-center gap-4">
-                  <span
-                    class="material-symbols-outlined"
-                    data-icon="restart_alt"
-                    >restart_alt</span
-                  >
-                  <span class="font-bold">Restart Host</span>
-                </div>
-                <span
-                  class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity"
-                  data-icon="chevron_right"
-                  >chevron_right</span
-                >
-              </button>
-              <button
-                class="flex items-center justify-between p-4 rounded-xl border-2 border-white/20 hover:bg-white/10 transition-colors group"
-              >
-                <div class="flex items-center gap-4">
-                  <span class="material-symbols-outlined" data-icon="lock"
-                    >lock</span
-                  >
-                  <span class="font-bold">System Lockdown</span>
-                </div>
-                <span
-                  class="material-symbols-outlined opacity-0 group-hover:opacity-100 transition-opacity"
-                  data-icon="chevron_right"
-                  >chevron_right</span
-                >
-              </button>
-              <button
-                class="flex items-center justify-between p-4 rounded-xl bg-white text-primary font-bold active:translate-y-0.5 transition-transform"
-              >
-                <div class="flex items-center gap-4">
-                  <span
-                    class="material-symbols-outlined"
-                    data-icon="bolt"
-                    style="font-variation-settings: &quot;FILL&quot; 1"
-                    >bolt</span
-                  >
-                  <span>Flush All Caches</span>
-                </div>
-              </button>
             </div>
           </section>
         </div>
