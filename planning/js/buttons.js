@@ -1,8 +1,5 @@
-// Button Management Module
-// Handles all button event listeners and interactions
-
 function initializeButtons() {
-  // Navigation buttons
+  //nav-buttons
   const nextBtn = document.getElementById("nextButton");
   const backBtn = document.getElementById("backButton");
 
@@ -18,7 +15,7 @@ function initializeButtons() {
     });
   }
 
-  // Today button
+  //Today-button
   const todayBtn = document.querySelector(".today-btn");
   if (todayBtn) {
     todayBtn.addEventListener("click", () => {
@@ -26,7 +23,7 @@ function initializeButtons() {
     });
   }
 
-  // Modal action buttons
+  //action-buttons
   const saveBtn = document.getElementById("saveButton");
   const cancelBtn = document.getElementById("cancelButton");
   const closeBtn = document.getElementById("closeButton");
@@ -79,15 +76,6 @@ function initializeButtons() {
 
   // Sidebar navigation and bottom navigation
   // Now handled by view-switcher module
-
-  // Insights button
-  const insightsBtn = document.querySelector(".insights-btn");
-  if (insightsBtn) {
-    insightsBtn.addEventListener("click", () => {
-      console.log("View insights clicked");
-      // Add insights view logic here
-    });
-  }
 
   // Input field enter key listener
   if (eventTitleInput) {

@@ -275,6 +275,24 @@ body > * {
   margin-left: 0;
 }
 
+.main-content > .top-header,
+.main-content > .calendar-section,
+.main-content > .focus-section,
+.main-content > .schedule-section,
+.main-content > .categories-section,
+.main-content > .settings-section,
+.main-content > .day-section,
+.main-content > .events-section,
+.main-content > .profile-section {
+  width: min(100%, 1280px);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.main-content > .top-header {
+  width: calc(100% - 48px);
+}
+
 .top-header {
   background: rgba(247, 249, 251, 0.82);
   border-bottom: 1px solid var(--nexus-outline);
