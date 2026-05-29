@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 
 <html class="light" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
-    <title>Zhou Audio Player</title>
+    <title>System Nexus | Zhou Audio Player</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap"
@@ -14,6 +14,42 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="./css/sidebar.css" />
+    <style>
+      .material-symbols-outlined {
+        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
+      }
+      .radial-blur {
+        background: radial-gradient(
+          circle at 50% 50%,
+          rgba(184, 195, 255, 0.08) 0%,
+          rgba(247, 249, 251, 0) 70%
+        );
+      }
+      .player-container {
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+      }
+      .album-art-shadow {
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      }
+      .top-header {
+        background: transparent;
+        border-bottom: none;
+        padding: 18px 28px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        position: fixed;
+        top: 0;
+        left: 256px;
+        right: 0;
+        z-index: 40;
+        backdrop-filter: none;
+      }
+    </style>
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -93,40 +129,48 @@
         },
       };
     </script>
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings:
-          "FILL" 0,
-          "wght" 400,
-          "GRAD" 0,
-          "opsz" 24;
-      }
-      .radial-blur {
-        background: radial-gradient(
-          circle at 50% 50%,
-          rgba(184, 195, 255, 0.08) 0%,
-          rgba(247, 249, 251, 0) 70%
-        );
-      }
-      .player-container {
-        max-width: 800px;
-        width: 100%;
-        margin: 0 auto;
-      }
-      .album-art-shadow {
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-      }
-    </style>
-    <link rel="stylesheet" href="../planning/css/system-theme.css" />
   </head>
   <body
     class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-primary-container min-h-screen radial-blur"
   >
+    <!-- Main Nexus Sidebar -->
+    <nav class="sidebar">
+      <div class="sidebar-branding">
+        <h1>MAIN TERMINAL</h1>
+        <p>v0.1.0 Active</p>
+      </div>
+      <div class="sidebar-nav site-nav">
+        <a href="../main/index.html" class="site-nav-link">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="../planning/index.html" class="site-nav-link">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <span>Agenda</span>
+        </a>
+        <a
+          href="../media/player.html"
+          class="site-nav-link active"
+          aria-current="page"
+        >
+          <span class="material-symbols-outlined">play_circle</span>
+          <span>Media</span>
+        </a>
+      </div>
+
+      <div class="sidebar-profile" style="margin-top: 14px">
+        <div class="profile-avatar">
+          <img src="" alt="temp" />
+        </div>
+        <div class="profile-info">
+          <span class="profile-name">temp</span>
+        </div>
+      </div>
+    </nav>
+
     <!-- Top Navigation Bar -->
-    <header
-      class="fixed top-0 left-0 right-0 z-50 flex justify-center items-center w-full px-container-padding h-touch-target-min bg-transparent border-0 shadow-none"
-    >
-      <nav class="flex items-center gap-8">
+    <header class="top-header">
+      <div class="hidden md:flex items-center gap-8">
         <a
           class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1"
           href=""
@@ -142,34 +186,9 @@
           href="#"
           >Audio</a
         >
-      </nav>
+      </div>
     </header>
 
-    <!-- Side Navigation Bar (unified with planning style) -->
-    <nav class="sidebar">
-      <div class="sidebar-branding">
-        <h1>MAIN TERMINAL</h1>
-        <p>v0.1.0 Active</p>
-      </div>
-      <div class="sidebar-nav site-nav">
-        <a href="../main/index.html" class="site-nav-link">
-          <span class="material-symbols-outlined">dashboard</span>
-          <span>Dashboard</span>
-        </a>
-        <a
-          href="../planning/index.html"
-          class="site-nav-link"
-          aria-current="page"
-        >
-          <span class="material-symbols-outlined">calendar_today</span>
-          <span>Agenda</span>
-        </a>
-        <a href="../media/player.html" class="site-nav-link active">
-          <span class="material-symbols-outlined">play_circle</span>
-          <span>Media</span>
-        </a>
-      </div>
-    </nav>
     <!-- Main Content Area: Zhou Audio Player Experience -->
     <main
       class="ml-64 pt-28 pb-24 min-h-screen px-container-padding flex flex-col items-center justify-center"
@@ -245,7 +264,7 @@
           >
             <span
               class="material-symbols-outlined text-5xl"
-              style="font-variation-settings: &quot;FILL&quot; 1"
+              style="font-variation-settings: 'FILL' 1"
               >pause</span
             >
           </button>
