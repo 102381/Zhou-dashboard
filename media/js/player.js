@@ -113,6 +113,23 @@ const albums = [
 const audio = document.createElement("audio");
 let currentSongIndex = 0;
 
+// Format time in seconds to MM:SS or H:MM:SS format
+function formatTime(seconds) {
+  if (!seconds || isNaN(seconds)) return "0:00";
+
+  const hours = Math.floor(seconds / 3600);
+  const minutes = Math.floor((seconds % 3600) / 60);
+  const secs = Math.floor(seconds % 60);
+
+  const paddedMins = String(minutes).padStart(2, "0");
+  const paddedSecs = String(secs).padStart(2, "0");
+
+  if (hours > 0) {
+    return `${hours}:${paddedMins}:${paddedSecs}`;
+  }
+  return `${minutes}:${paddedSecs}`;
+}
+
 document.addEventListener("DOMContentLoaded", function () {
   const songImage = document.getElementById("song-image");
   const songName = document.getElementById("song-name");
