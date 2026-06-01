@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Zhou Audio Discovery</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <link
       href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap"
       rel="stylesheet"
@@ -11,6 +12,30 @@
     <link rel="stylesheet" href="../css/discovery.css" />
   </head>
   <body>
+    <header class="top-header">
+      <div class="hidden md:flex items-center gap-8">
+        <a
+          class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1"
+          href=""
+          >Movies</a
+        >
+        <a
+          class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1"
+          href="#"
+          >TV Shows</a
+        >
+        <a
+          class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1"
+          href="../player.html"
+          >Audio</a
+        >
+        <a
+          class="text-primary font-bold border-b-2 border-primary px-2 py-1"
+          href="./discovery.html"
+          >Discovery</a
+        >
+      </div>
+    </header>
     <div class="page">
       <aside class="side">
         <div class="brand">
@@ -27,20 +52,6 @@
       </aside>
 
       <main class="content">
-        <section class="hero">
-          <div class="hero-top">
-            <div>
-              <h2>Discover albums by category</h2>
-              <p>
-                Browse the collection, switch categories, and open the album you
-                want. The layout keeps the same calm surface and strong contrast
-                used in the player.
-              </p>
-            </div>
-            <a class="hero-link" href="../player.html">Open player</a>
-          </div>
-        </section>
-
         <section class="filters" aria-label="Album categories">
           <button class="filter-btn active" type="button" data-category="all">
             All

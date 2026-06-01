@@ -34,6 +34,38 @@ a {
   text-decoration: none;
 }
 
+.top-header {
+  background: transparent;
+  border-bottom: none;
+  padding: 18px 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  position: fixed;
+  top: 0;
+  left: 256px;
+  right: 0;
+  z-index: 40;
+  backdrop-filter: none;
+}
+
+.top-header a {
+  color: var(--muted);
+  transition: color 160ms ease;
+  padding: 8px;
+}
+
+.top-header a:hover {
+  color: var(--accent-soft);
+}
+
+.top-header a.active {
+  color: var(--accent-soft);
+  font-weight: 700;
+  border-bottom: 2px solid var(--accent-soft);
+}
+
 .page {
   display: flex;
   min-height: 100vh;
@@ -116,6 +148,7 @@ a {
   margin-left: 256px;
   width: calc(100% - 256px);
   padding: 32px;
+  padding-top: 100px;
 }
 
 .hero {
@@ -219,8 +252,9 @@ a {
   max-width: 1180px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(220px, 220px));
   gap: 20px;
+  justify-content: start;
 }
 
 .album-card {
