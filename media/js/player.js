@@ -2,7 +2,8 @@
 let shuffleMode = false;
 let repeatMode = false;
 
-const songs = [
+// Top-level songs list (may be replaced when opening an album)
+let songs = [
   {
     image: "./css/audio/cover/luther-cover.jpg",
     name: "luther",
@@ -26,6 +27,86 @@ const songs = [
     name: "Nevermind",
     artist: "Nirvana",
     Audio: "./css/audio/luther-kendrick.mp3",
+  },
+];
+
+//album data
+const albums = [
+  {
+    title: "GNX",
+    artist: "Kendrick Lamar",
+    image: "./css/audio/cover/luther-cover.jpg",
+    songs: [
+      {
+        image: "./css/audio/cover/luther-cover.jpg",
+        name: "luther",
+        artist: "kendrick",
+        Audio: "./css/audio/luther-kendrick.mp3",
+      },
+      {
+        image: "./css/audio/cover/luther-cover.jpg",
+        name: "afterglow",
+        artist: "kendrick",
+        Audio: "./css/audio/luther-kendrick.mp3",
+      },
+    ],
+  },
+  {
+    title: "mother's milk",
+    artist: "Red Hot Chili Peppers",
+    image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
+    songs: [
+      {
+        image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
+        name: "dani california",
+        artist: "RHCP",
+        Audio: "./css/audio/luther-kendrick.mp3",
+      },
+      {
+        image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
+        name: "under the bridge",
+        artist: "RHCP",
+        Audio: "./css/audio/luther-kendrick.mp3",
+      },
+    ],
+  },
+  {
+    title: "Cave world",
+    artist: "Viagra Boys",
+    image: "./css/audio/cover/Cave-world-viagra-boys-cover.png",
+    songs: [
+      {
+        image: "./css/audio/cover/Cave-world-viagra-boys-cover.png",
+        name: "cave world",
+        artist: "Viagra Boys",
+        Audio: "./css/audio/luther-kendrick.mp3",
+      },
+      {
+        image: "./css/audio/cover/Cave-world-viagra-boys-cover.png",
+        name: "release",
+        artist: "Viagra Boys",
+        Audio: "./css/audio/luther-kendrick.mp3",
+      },
+    ],
+  },
+  {
+    title: "Nevermind",
+    artist: "Nirvana",
+    image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
+    songs: [
+      {
+        image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
+        name: "smells like teen spirit",
+        artist: "Nirvana",
+        Audio: "./css/audio/luther-kendrick.mp3",
+      },
+      {
+        image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
+        name: "come as you are",
+        artist: "Nirvana",
+        Audio: "./css/audio/luther-kendrick.mp3",
+      },
+    ],
   },
 ];
 
@@ -59,6 +140,41 @@ document.addEventListener("DOMContentLoaded", function () {
       const idx = parseInt(songParam, 10);
       if (!isNaN(idx) && idx >= 0 && idx < songs.length) {
         currentSongIndex = idx;
+      }
+    }
+    // If an album index is provided load that album's songs
+    const albumParam = params.get("album");
+    if (albumParam !== null) {
+      const albumIndex = parseInt(albumParam, 10);
+      if (!isNaN(albumIndex) && albumIndex >= 0 && albumIndex < albums.length) {
+        // replace the songs list with the selected album's songs
+        songs = albums[albumIndex].songs.slice();
+        currentSongIndex = 0;
+
+        // render simple playlist UI if present
+        const albumPlaylist = document.getElementById("album-playlist");
+        const albumTitle = document.getElementById("album-title");
+        const albumSongs = document.getElementById("album-songs");
+
+        if (albumTitle)
+          albumTitle.innerText = `${albums[albumIndex].title} — ${albums[albumIndex].artist}`;
+        if (albumSongs && albumPlaylist) {
+          albumSongs.innerHTML = "";
+          songs.forEach((s, i) => {
+            const li = document.createElement("li");
+            li.className =
+              "flex items-center justify-between p-3 bg-surface-container-low rounded";
+            li.innerHTML = `<span>${i + 1}. ${s.name} — ${s.artist}</span><button class=\"play-song-btn\">Play</button>`;
+            const btn = li.querySelector(".play-song-btn");
+            btn.addEventListener("click", () => {
+              currentSongIndex = i;
+              updateSong();
+              audio.play();
+            });
+            albumSongs.appendChild(li);
+          });
+          albumPlaylist.classList.remove("hidden");
+        }
       }
     }
   } catch (e) {
@@ -190,103 +306,3 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setInterval(moveSlider, 100);
 });
-
-//checks if you dont go to -1
-prevBtn.addEventListener("click", function () {
-  if (currentSongIndex == 0) {
-    return;
-  }
-  currentSongIndex--;
-  updateSong();
-});
-
-// Update next button to check shuffle mode
-nextBtn.addEventListener("click", function () {
-  if (shuffleMode) {
-    currentSongIndex = Math.floor(Math.random() * songs.length);
-  } else {
-    if (currentSongIndex == songs.length - 1) {
-      return;
-    }
-    currentSongIndex++;
-  }
-  updateSong();
-});
-
-playpauseBtn.addEventListener("click", function () {
-  const icon = playpauseBtn.querySelector("span");
-  if (!audio.paused) {
-    audio.pause();
-    icon.innerText = "play_arrow";
-  } else {
-    audio.play();
-    icon.innerText = "pause";
-  }
-});
-
-shuffleBtn.addEventListener("click", function () {
-  shuffleMode = !shuffleMode;
-  shuffleBtn.style.opacity = shuffleMode ? "1" : "0.5";
-});
-
-repeatBtn.addEventListener("click", function () {
-  repeatMode = !repeatMode;
-  repeatBtn.style.opacity = repeatMode ? "1" : "0.5";
-});
-
-audio.addEventListener("ended", function () {
-  const icon = playpauseBtn.querySelector("span");
-  if (repeatMode) {
-    audio.currentTime = 0;
-    audio.play();
-    icon.innerText = "pause";
-  } else {
-    if (shuffleMode) {
-      currentSongIndex = Math.floor(Math.random() * songs.length);
-    } else {
-      if (currentSongIndex < songs.length - 1) {
-        currentSongIndex++;
-      } else {
-        icon.innerText = "play_arrow";
-        return;
-      }
-    }
-    updateSong();
-    audio.play();
-    icon.innerText = "pause";
-  }
-});
-//updates the music player information
-function updateSong() {
-  const song = songs[currentSongIndex];
-  songImage.src = song.image;
-  songName.innerText = song.name;
-  songArtist.innerText = song.artist;
-
-  audio.src = song.Audio;
-  audio.load();
-}
-
-audio.addEventListener("loadedmetadata", function () {
-  songSlider.max = Math.ceil(audio.duration);
-  songSlider.value = 0;
-  currentTimeDisplay.innerText = "0:00";
-  totalTimeDisplay.innerText = formatTime(audio.duration);
-});
-
-songSlider.addEventListener("change", function () {
-  audio.currentTime = songSlider.value;
-});
-
-function formatTime(seconds) {
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return `${mins}:${secs.toString().padStart(2, "0")}`;
-}
-
-function moveSlider() {
-  songSlider.value = audio.currentTime;
-  currentTimeDisplay.innerText = formatTime(audio.currentTime);
-}
-
-setInterval(moveSlider, 100);
