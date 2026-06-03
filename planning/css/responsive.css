@@ -7,6 +7,9 @@
 
   .main-content {
     margin-left: 256px;
+    height: calc(100vh - 80px);
+    min-height: 0;
+    overflow: hidden;
   }
 
   .bottom-nav,
@@ -20,6 +23,11 @@
 
   .focus-section {
     grid-template-columns: 2fr 1fr;
+  }
+
+  #months-view {
+    height: 100%;
+    overflow: hidden;
   }
 }
 

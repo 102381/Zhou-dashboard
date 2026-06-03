@@ -350,51 +350,8 @@
                 >calendar_today</span
               >
             </div>
-            <div class="space-y-4 flex-grow">
-              <div
-                class="p-4 bg-surface-container rounded-xl flex gap-4 items-center border-l-4 border-primary"
-              >
-                <div class="text-center min-w-[48px]">
-                  <p class="text-[10px] font-bold uppercase">Oct</p>
-                  <p class="text-h2 font-bold leading-none">24</p>
-                </div>
-                <div>
-                  <h4 class="font-bold text-body-md">
-                    System Architecture Review
-                  </h4>
-                  <p class="text-xs text-secondary">
-                    09:00 - 10:30 • Conference Room B
-                  </p>
-                </div>
-              </div>
-              <div
-                class="p-4 bg-surface-container rounded-xl flex gap-4 items-center"
-              >
-                <div class="text-center min-w-[48px]">
-                  <p class="text-[10px] font-bold uppercase">Oct</p>
-                  <p class="text-h2 font-bold leading-none">24</p>
-                </div>
-                <div>
-                  <h4 class="font-bold text-body-md">Security Audit Sync</h4>
-                  <p class="text-xs text-secondary">
-                    13:00 - 14:00 • Remote Hub
-                  </p>
-                </div>
-              </div>
-              <div
-                class="p-4 bg-surface-container rounded-xl flex gap-4 items-center"
-              >
-                <div class="text-center min-w-[48px]">
-                  <p class="text-[10px] font-bold uppercase">Oct</p>
-                  <p class="text-h2 font-bold leading-none">25</p>
-                </div>
-                <div>
-                  <h4 class="font-bold text-body-md">Data Pipeline Refactor</h4>
-                  <p class="text-xs text-secondary">
-                    11:15 - 12:45 • Engineering Lab
-                  </p>
-                </div>
-              </div>
+            <div class="space-y-4 flex-grow" id="agendaEventsList">
+              <p class="text-xs text-secondary text-center py-4">Loading events...</p>
             </div>
           </section>
           <!-- Honeypot Analytics Card (Span 4) -->
@@ -467,7 +424,7 @@
               </div>
             </div>
           </section>
-          <!-- Media Server Card (Span 4) -->
+          <!-- Media Server Card -->
           <section
             class="col-span-12 lg:col-span-4 bg-white rounded-[24px] border border-outline-variant p-card-internal-padding flex flex-col relative overflow-hidden"
           >
@@ -549,5 +506,86 @@
         </div>
       </div>
     </main>
+
+    <script>
+      // Load and display upcoming events from the calendar app
+      function loadAgendaEvents() {
+        const agendaList = document.getElementById('agendaEventsList');
+        if (!agendaList) return;
+
+        // Get events from localStorage (shared with planning app)
+        const events = localStorage.getItem('events')
+          ? JSON.parse(localStorage.getItem('events'))
+          : [];
+
+        if (events.length === 0) {
+          agendaList.innerHTML = '<p class="text-xs text-secondary text-center py-4">No upcoming events</p>';
+          return;
+        }
+
+        // Get today's date
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+
+        // Filter for upcoming events (today and future)
+        const upcomingEvents = events.filter(event => {
+          const [day, month, year] = event.date.split('/').map(Number);
+          const eventDate = new Date(year, month - 1, day);
+          eventDate.setHours(0, 0, 0, 0);
+          return eventDate >= today;
+        });
+
+        // Sort by date
+        upcomingEvents.sort((a, b) => {
+          const [dayA, monthA, yearA] = a.date.split('/').map(Number);
+          const [dayB, monthB, yearB] = b.date.split('/').map(Number);
+          const dateA = new Date(yearA, monthA - 1, dayA);
+          const dateB = new Date(yearB, monthB - 1, dayB);
+          return dateA - dateB;
+        });
+
+        // Limit to next 5 events
+        const limitedEvents = upcomingEvents.slice(0, 5);
+
+        if (limitedEvents.length === 0) {
+          agendaList.innerHTML = '<p class="text-xs text-secondary text-center py-4">No upcoming events</p>';
+          return;
+        }
+
+        // Render events
+        agendaList.innerHTML = limitedEvents
+          .map((event, index) => {
+            const [day, month, year] = event.date.split('/').map(Number);
+            const eventDate = new Date(year, month - 1, day);
+            const monthName = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+            const isFirstEvent = index === 0;
+            const borderClass = isFirstEvent ? 'border-primary' : 'border-outline-variant';
+            
+            return `
+              <div class="p-4 bg-surface-container rounded-xl flex gap-4 items-center border-l-4 ${borderClass}">
+                <div class="text-center min-w-[48px]">
+                  <p class="text-[10px] font-bold uppercase">${monthName}</p>
+                  <p class="text-h2 font-bold leading-none">${day}</p>
+                </div>
+                <div>
+                  <h4 class="font-bold text-body-md">${event.title}</h4>
+                  <p class="text-xs text-secondary">${year}</p>
+                </div>
+              </div>
+            `;
+          })
+          .join('');
+      }
+
+      // Load events when page is ready
+      document.addEventListener('DOMContentLoaded', loadAgendaEvents);
+      
+      // Listen for storage changes (when events are added/deleted in the planning app)
+      window.addEventListener('storage', (e) => {
+        if (e.key === 'events') {
+          loadAgendaEvents();
+        }
+      });
+    </script>
   </body>
 </html>
