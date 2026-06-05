@@ -315,6 +315,7 @@ a {
   justify-content: space-between;
   align-items: center;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .badge {
@@ -335,6 +336,28 @@ a {
   color: var(--accent);
   font: inherit;
   font-weight: 700;
+}
+
+.song-add-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  color: var(--muted);
+  transition:
+    color 160ms ease,
+    transform 160ms ease;
+}
+
+.song-add-icon:hover {
+  color: var(--accent);
+  transform: translateY(-1px);
+}
+
+.song-add-icon .material-symbols-outlined {
+  font-size: 24px;
 }
 
 .hidden {
