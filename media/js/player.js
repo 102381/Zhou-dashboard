@@ -1,9 +1,12 @@
 // UI and controls are initialized after DOM is ready to ensure IDs exist
 let shuffleMode = false;
 let repeatMode = false;
+let queueMode = false;
 
-// Top-level songs list (may be replaced when opening an album)
-let songs = [
+const queueStorageKey = "zhou-media-queue";
+
+// Top-level songs list 
+const defaultSongs = [
   {
     image: "./css/audio/cover/luther-cover.jpg",
     name: "luther",
@@ -29,6 +32,66 @@ let songs = [
     Audio: "./css/audio/luther-kendrick.mp3",
   },
 ];
+
+function songKey(song) {
+  return [song.name, song.artist, song.Audio, song.image].join("|");
+}
+
+function findSongIndex(targetSong) {
+  return songs.findIndex(function (song) {
+    return songKey(song) === songKey(targetSong);
+  });
+}
+
+function loadQueue() {
+  try {
+    const storedQueue = localStorage.getItem(queueStorageKey);
+    if (!storedQueue) return [];
+
+    const parsedQueue = JSON.parse(storedQueue);
+    return Array.isArray(parsedQueue) ? parsedQueue : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function saveQueue(queue) {
+  try {
+    localStorage.setItem(queueStorageKey, JSON.stringify(queue));
+  } catch (e) {
+    // ignore storage errors
+  }
+}
+
+function setQueue(queue) {
+  songs = queue.slice();
+  saveQueue(songs);
+}
+
+function addToQueue(newSongs) {
+  let addedCount = 0;
+
+  newSongs.forEach(function (song) {
+    const exists = songs.some(function (queuedSong) {
+      return songKey(queuedSong) === songKey(song);
+    });
+
+    if (!exists) {
+      songs.push(song);
+      addedCount += 1;
+    }
+  });
+
+  saveQueue(songs);
+  return addedCount;
+}
+
+let songs = loadQueue();
+
+if (songs.length === 0) {
+  songs = defaultSongs.slice();
+  saveQueue(songs);
+}
 
 //album data
 const albums = [
@@ -145,6 +208,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const nextBtn = document.getElementById("next-button");
   const shuffleBtn = document.getElementById("shuffle-song");
   const repeatBtn = document.getElementById("repeat-song");
+  const queueBtn = document.getElementById("queue-button");
+  const albumPlaylist = document.getElementById("album-playlist");
+  const albumTitle = document.getElementById("album-title");
+  const albumSongs = document.getElementById("album-songs");
 
   // Debug: ensure elements found
   console.log("player init: elements", { songImage, songName, songArtist });
@@ -164,46 +231,39 @@ document.addEventListener("DOMContentLoaded", function () {
     if (albumParam !== null) {
       const albumIndex = parseInt(albumParam, 10);
       if (!isNaN(albumIndex) && albumIndex >= 0 && albumIndex < albums.length) {
-        // replace the songs list with the selected album's songs
-        songs = albums[albumIndex].songs.slice();
-        currentSongIndex = 0;
+        const addMode = params.get("add") === "1";
+        const songParam = params.get("song");
+        const albumSongs = albums[albumIndex].songs.slice();
+        const selectedSongIndex =
+          songParam !== null ? parseInt(songParam, 10) : -1;
+        const selectedSong =
+          !isNaN(selectedSongIndex) &&
+          selectedSongIndex >= 0 &&
+          selectedSongIndex < albumSongs.length
+            ? albumSongs[selectedSongIndex]
+            : null;
 
-        // render simple playlist UI if present
-        const albumPlaylist = document.getElementById("album-playlist");
-        const albumTitle = document.getElementById("album-title");
-        const albumSongs = document.getElementById("album-songs");
-
-        if (albumTitle)
-          albumTitle.innerText = `${albums[albumIndex].title} — ${albums[albumIndex].artist}`;
-        if (albumSongs && albumPlaylist) {
-          albumSongs.innerHTML = "";
-          songs.forEach((s, i) => {
-            const li = document.createElement("li");
-            li.className =
-              "flex items-center justify-between p-3 bg-surface-container-low rounded";
-            li.innerHTML = `<span>${i + 1}. ${s.name} — ${s.artist}</span><button class=\"play-song-btn\">Play</button>`;
-            const btn = li.querySelector(".play-song-btn");
-            btn.addEventListener("click", () => {
-              currentSongIndex = i;
-              updateSong();
-              audio.play();
-            });
-            albumSongs.appendChild(li);
-          });
-          albumPlaylist.classList.remove("hidden");
+        if (addMode) {
+          const addedCount = addToQueue(
+            selectedSong ? [selectedSong] : albumSongs,
+          );
+          if (selectedSong) {
+            const queuedIndex = findSongIndex(selectedSong);
+            if (queuedIndex >= 0) {
+              currentSongIndex = queuedIndex;
+            }
+          } else if (addedCount > 0) {
+            currentSongIndex = songs.length - addedCount;
+          }
+        } else {
+          setQueue(albumSongs);
+          currentSongIndex = 0;
         }
       }
     }
   } catch (e) {
-    // ignore if URL parsing isn't available (e.g., non-browser env)
+    // ignore if URL parsing isn't available 
   }
-
-  console.log(
-    "player init: songs length",
-    songs.length,
-    "start index",
-    currentSongIndex,
-  );
 
   // attach events (guard if buttons are present)
   if (prevBtn) {
@@ -257,6 +317,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  if (queueBtn) {
+    queueBtn.addEventListener("click", function () {
+      queueMode = !queueMode;
+      renderQueue();
+    });
+  }
+
   audio.addEventListener("ended", function () {
     const icon = playpauseBtn ? playpauseBtn.querySelector("span") : null;
     if (repeatMode) {
@@ -291,6 +358,32 @@ document.addEventListener("DOMContentLoaded", function () {
 
     audio.src = song.Audio;
     audio.load();
+    renderQueue();
+  }
+
+  function renderQueue() {
+    if (!albumPlaylist || !albumTitle || !albumSongs) return;
+
+    albumTitle.innerText = "Queue";
+    albumPlaylist.classList.toggle("hidden", !queueMode);
+    if (!queueMode) return;
+
+    albumSongs.innerHTML = "";
+    songs.forEach(function (song, index) {
+      const li = document.createElement("li");
+      li.className =
+        "flex items-center justify-between p-3 bg-surface-container-low rounded";
+      if (index === currentSongIndex) {
+        li.classList.add("border", "border-primary");
+      }
+      li.innerHTML = `<span>${index + 1}. ${song.name} — ${song.artist}</span>`;
+      li.addEventListener("click", function () {
+        currentSongIndex = index;
+        updateSong();
+        audio.play();
+      });
+      albumSongs.appendChild(li);
+    });
   }
 
   if (songSlider) {
@@ -322,4 +415,22 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   setInterval(moveSlider, 100);
+
+
+  document.getElementById("share-button")?.addEventListener("click", function () {
+   if (navigator.share) {
+      const song = songs[currentSongIndex];
+      navigator
+        .share({
+          title: song.name,
+          text: `Listening to ${song.name} by ${song.artist}`,
+          url: window.location.href,
+        })
+        .then(() => console.log("Shared successfully"))
+        .catch((error) => console.error("Error sharing:", error));
+    } else {
+      alert("Sharing is not supported in this browser.");
+    }
+      });
+
 });
