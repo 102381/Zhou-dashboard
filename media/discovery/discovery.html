@@ -14,7 +14,9 @@
       .song-list {
         overflow: hidden;
         max-height: 0;
-        transition: max-height 0.35s ease, opacity 0.25s ease;
+        transition:
+          max-height 0.35s ease,
+          opacity 0.25s ease;
         opacity: 0;
       }
       .song-list.open {
@@ -26,14 +28,14 @@
         align-items: center;
         gap: 12px;
         padding: 10px 18px;
-        border-top: 1px solid rgba(198,198,205,0.45);
+        border-top: 1px solid rgba(198, 198, 205, 0.45);
         transition: background 140ms ease;
         cursor: pointer;
         text-decoration: none;
         color: inherit;
       }
       .song-row:hover {
-        background: rgba(184,195,255,0.12);
+        background: rgba(184, 195, 255, 0.12);
       }
       .song-num {
         font-size: 0.75rem;
@@ -69,7 +71,9 @@
       .open-btn {
         cursor: pointer;
         border: none;
-        transition: background 160ms ease, transform 160ms ease;
+        transition:
+          background 160ms ease,
+          transform 160ms ease;
       }
       .open-btn:hover {
         transform: translateY(-1px);
@@ -83,10 +87,26 @@
   <body>
     <header class="top-header">
       <div class="hidden md:flex items-center gap-8">
-        <a class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1" href="">Movies</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1" href="#">TV Shows</a>
-        <a class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1" href="../player.html">Audio</a>
-        <a class="text-primary font-bold border-b-2 border-primary px-2 py-1" href="./discovery.html">Discovery</a>
+        <a
+          class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1"
+          href=""
+          >Movies</a
+        >
+        <a
+          class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1"
+          href="#"
+          >TV Shows</a
+        >
+        <a
+          class="text-on-surface-variant hover:text-primary transition-colors px-2 py-1"
+          href="../player.html"
+          >Audio</a
+        >
+        <a
+          class="text-primary font-bold border-b-2 border-primary px-2 py-1"
+          href="./discovery.html"
+          >Discovery</a
+        >
       </div>
     </header>
     <div class="page">
@@ -97,18 +117,30 @@
         </div>
         <nav class="nav" aria-label="Media sections">
           <a href="../player.html">Media</a>
-          <a class="active" href="./discovery.html" aria-current="page">Discovery</a>
+          <a class="active" href="./discovery.html" aria-current="page"
+            >Discovery</a
+          >
         </nav>
         <div class="profile">Album browser for quick category picking.</div>
       </aside>
 
       <main class="content">
         <section class="filters" aria-label="Album categories">
-          <button class="filter-btn active" type="button" data-category="all">All</button>
-          <button class="filter-btn" type="button" data-category="chill">Chill</button>
-          <button class="filter-btn" type="button" data-category="focus">Focus</button>
-          <button class="filter-btn" type="button" data-category="night">Night</button>
-          <button class="filter-btn" type="button" data-category="retro">Retro</button>
+          <button class="filter-btn active" type="button" data-category="all">
+            All
+          </button>
+          <button class="filter-btn" type="button" data-category="chill">
+            Chill
+          </button>
+          <button class="filter-btn" type="button" data-category="focus">
+            Focus
+          </button>
+          <button class="filter-btn" type="button" data-category="night">
+            Night
+          </button>
+          <button class="filter-btn" type="button" data-category="retro">
+            Retro
+          </button>
         </section>
 
         <section class="section-title">
@@ -119,7 +151,6 @@
         </section>
 
         <section class="grid" id="album-grid">
-
           <!-- GNX -->
           <article class="album-card" data-category="chill" data-album="0">
             <div class="cover">
@@ -130,6 +161,7 @@
               <p>Kendrick Lamar</p>
               <div class="card-row">
                 <div class="badge">Chill</div>
+                <button class="add-album-btn">+ Add album</button>
                 <button class="open-btn" data-album="0">Open album</button>
               </div>
             </div>
@@ -141,6 +173,7 @@
                   <div class="song-artist">Kendrick Lamar</div>
                 </div>
                 <span class="play-icon">▶</span>
+                <div class="add-to-queue">+</div>
               </a>
               <a class="song-row" href="../player.html?album=0&song=1">
                 <span class="song-num">2</span>
@@ -149,6 +182,7 @@
                   <div class="song-artist">Kendrick Lamar</div>
                 </div>
                 <span class="play-icon">▶</span>
+                <div class="add-to-queue">+</div>
               </a>
             </div>
           </article>
@@ -156,13 +190,17 @@
           <!-- Mother's Milk -->
           <article class="album-card" data-category="focus" data-album="1">
             <div class="cover">
-              <img src="../css/audio/cover/RHCP-mother's-milk-cover.webp" alt="Mother's Milk cover" />
+              <img
+                src="../css/audio/cover/RHCP-mother's-milk-cover.webp"
+                alt="Mother's Milk cover"
+              />
             </div>
             <div class="card-body">
               <h4>mother's milk</h4>
               <p>Red Hot Chili Peppers</p>
               <div class="card-row">
                 <div class="badge">Focus</div>
+                <button class="add-album-btn">+ Add album</button>
                 <button class="open-btn" data-album="1">Open album</button>
               </div>
             </div>
@@ -174,6 +212,7 @@
                   <div class="song-artist">RHCP</div>
                 </div>
                 <span class="play-icon">▶</span>
+                <div class="add-to-queue">+</div>
               </a>
               <a class="song-row" href="../player.html?album=1&song=1">
                 <span class="song-num">2</span>
@@ -182,6 +221,7 @@
                   <div class="song-artist">RHCP</div>
                 </div>
                 <span class="play-icon">▶</span>
+                <div class="add-to-queue">+</div>
               </a>
             </div>
           </article>
@@ -189,13 +229,17 @@
           <!-- Cave World -->
           <article class="album-card" data-category="night" data-album="2">
             <div class="cover">
-              <img src="../css/audio/cover/Cave-world-viagra-boys-cover.png" alt="Cave World cover" />
+              <img
+                src="../css/audio/cover/Cave-world-viagra-boys-cover.png"
+                alt="Cave World cover"
+              />
             </div>
             <div class="card-body">
               <h4>Cave world</h4>
               <p>Viagra Boys</p>
               <div class="card-row">
                 <div class="badge">Night</div>
+                <button class="add-album-btn">+ Add album</button>
                 <button class="open-btn" data-album="2">Open album</button>
               </div>
             </div>
@@ -207,6 +251,7 @@
                   <div class="song-artist">Viagra Boys</div>
                 </div>
                 <span class="play-icon">▶</span>
+                <div class="add-to-queue">+</div>
               </a>
               <a class="song-row" href="../player.html?album=2&song=1">
                 <span class="song-num">2</span>
@@ -215,7 +260,7 @@
                   <div class="song-artist">Viagra Boys</div>
                 </div>
                 <span class="play-icon">▶</span>
-                
+                <div class="add-to-queue">+</div>
               </a>
             </div>
           </article>
@@ -223,13 +268,17 @@
           <!-- Nevermind -->
           <article class="album-card" data-category="retro" data-album="3">
             <div class="cover">
-              <img src="../css/audio/cover/nevermind-nirvana-album-cover.jpg" alt="Nevermind cover" />
+              <img
+                src="../css/audio/cover/nevermind-nirvana-album-cover.jpg"
+                alt="Nevermind cover"
+              />
             </div>
             <div class="card-body">
               <h4>nevermind</h4>
               <p>Nirvana</p>
               <div class="card-row">
                 <div class="badge">Grunge</div>
+                <button class="add-album-btn">+ Add album</button>
                 <button class="open-btn" data-album="3">Open album</button>
               </div>
             </div>
@@ -241,6 +290,7 @@
                   <div class="song-artist">Nirvana</div>
                 </div>
                 <span class="play-icon">▶</span>
+                <div class="add-to-queue">+</div>
               </a>
               <a class="song-row" href="../player.html?album=3&song=1">
                 <span class="song-num">2</span>
@@ -249,10 +299,10 @@
                   <div class="song-artist">Nirvana</div>
                 </div>
                 <span class="play-icon">▶</span>
+                <div class="add-to-queue">+</div>
               </a>
             </div>
           </article>
-
         </section>
       </main>
     </div>

@@ -329,7 +329,8 @@ a {
   letter-spacing: 0.08em;
 }
 
-.open-btn {
+.open-btn,
+.add-album-btn {
   padding: 10px 14px;
   border-radius: 999px;
   background: var(--accent-soft);
@@ -395,4 +396,42 @@ a {
   .content {
     padding: 16px;
   }
+}
+
+/* Prevent the + button from being swallowed by the <a> row */
+.add-to-queue {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  background: var(--surface-soft);
+  color: var(--muted);
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition:
+    background 160ms ease,
+    color 160ms ease,
+    transform 160ms ease;
+  /* Ensure pointer events are captured here, not the parent <a> */
+  pointer-events: all;
+}
+
+.add-to-queue:hover {
+  background: var(--accent-soft);
+  color: var(--accent);
+  transform: scale(1.1);
+}
+
+.add-to-queue[data-added="true"] {
+  color: var(--accent);
+  background: var(--accent-soft);
+  opacity: 0.6;
+  cursor: default;
+  transform: none;
 }

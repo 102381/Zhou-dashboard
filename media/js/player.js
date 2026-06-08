@@ -23,7 +23,7 @@ const defaultSongs = [
     image: "./css/audio/cover/Cave-world-viagra-boys-cover.png",
     name: "Cave World",
     artist: "Viagra Boys",
-    Audio: "./css/audio/luther-kendrick.mp3",
+    Audio: "./css/audio/viagra-boys.mp3",
   },
   {
     image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
@@ -142,13 +142,13 @@ const albums = [
         image: "./css/audio/cover/Cave-world-viagra-boys-cover.png",
         name: "cave world",
         artist: "Viagra Boys",
-        Audio: "./css/audio/luther-kendrick.mp3",
+        Audio: "./css/audio/viagra-boys.mp3",
       },
       {
         image: "./css/audio/cover/Cave-world-viagra-boys-cover.png",
         name: "release",
         artist: "Viagra Boys",
-        Audio: "./css/audio/luther-kendrick.mp3",
+        Audio: "./css/audio/viagra-boys.mp3",
       },
     ],
   },
@@ -161,13 +161,13 @@ const albums = [
         image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
         name: "smells like teen spirit",
         artist: "Nirvana",
-        Audio: "./css/audio/luther-kendrick.mp3",
+        Audio: "./css/audio/viagra-boys.mp3",
       },
       {
         image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
         name: "come as you are",
         artist: "Nirvana",
-        Audio: "./css/audio/luther-kendrick.mp3",
+        Audio: "./css/audio/viagra-boys.mp3",
       },
     ],
   },
@@ -369,10 +369,14 @@ document.addEventListener("DOMContentLoaded", function () {
     if (!queueMode) return;
 
     albumSongs.innerHTML = "";
+    let dragSrcIndex = null;
+
     songs.forEach(function (song, index) {
       const li = document.createElement("li");
       li.className =
         "flex items-center justify-between p-3 bg-surface-container-low rounded";
+      li.draggable = true;
+
       if (index === currentSongIndex) {
         li.classList.add("border", "border-primary");
       }
@@ -381,6 +385,54 @@ document.addEventListener("DOMContentLoaded", function () {
         currentSongIndex = index;
         updateSong();
         audio.play();
+      });
+
+      // Drag events
+      li.addEventListener("dragstart", function () {
+        dragSrcIndex = index;
+        li.classList.add("opacity-50");
+      });
+
+      li.addEventListener("dragend", function () {
+        li.classList.remove("opacity-50");
+      });
+
+      li.addEventListener("dragover", function (e) {
+        e.preventDefault(); // allow drop
+        li.classList.add("border-t-2", "border-primary");
+      });
+
+      li.addEventListener("dragleave", function () {
+        li.classList.remove("border-t-2", "border-primary");
+      });
+
+      li.addEventListener("drop", function (e) {
+        e.preventDefault();
+        li.classList.remove("border-t-2", "border-primary");
+
+        if (dragSrcIndex === null || dragSrcIndex === index) return;
+
+        // Reorder songs array
+        const draggedSong = songs.splice(dragSrcIndex, 1)[0];
+        songs.splice(index, 0, draggedSong);
+
+        // Keep currentSongIndex pointing at the same song after reorder
+        if (currentSongIndex === dragSrcIndex) {
+          currentSongIndex = index;
+        } else if (
+          dragSrcIndex < currentSongIndex &&
+          index >= currentSongIndex
+        ) {
+          currentSongIndex--;
+        } else if (
+          dragSrcIndex > currentSongIndex &&
+          index <= currentSongIndex
+        ) {
+          currentSongIndex++;
+        }
+
+        saveQueue(songs);
+        renderQueue(); // re-render with new order
       });
       albumSongs.appendChild(li);
     });
