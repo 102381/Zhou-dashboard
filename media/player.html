@@ -53,6 +53,45 @@
         z-index: 40;
         backdrop-filter: none;
       }
+
+      input[type=range]#volume-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 96px;
+  height: 4px;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    #b8c3ff var(--val, 75%),
+    #c6c6cd var(--val, 75%)
+  );
+  outline: none;
+  cursor: pointer;
+}
+input[type=range]#volume-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #b8c3ff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1.5px #b8c3ff;
+  transition: transform 0.15s;
+}
+input[type=range]#volume-slider::-moz-range-thumb {
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #b8c3ff;
+  border: 2px solid #ffffff;
+  box-shadow: 0 0 0 1.5px #b8c3ff;
+  transition: transform 0.15s;
+}
+input[type=range]#volume-slider:hover::-webkit-slider-thumb,
+input[type=range]#volume-slider:hover::-moz-range-thumb {
+  transform: scale(1.25);
+}
+
+     
     </style>
     <script id="tailwind-config">
       tailwind.config = {
@@ -299,11 +338,7 @@
             class="flex items-center gap-3 bg-surface-container-low px-4 py-2 rounded-full border border-outline-variant"
           >
             <span class="material-symbols-outlined text-xl">volume_up</span>
-            <div
-              class="w-24 h-1 bg-outline-variant rounded-full overflow-hidden"
-            >
-              <div class="h-full bg-on-surface-variant w-[75%]"></div>
-            </div>
+                <input type="range" min="0" max="100" value="75" class="w-full h-full appearance-none cursor-pointer" style="accent-color: #0b30ff" id="volume-slider" />
           </div>
           <button class="hover:text-primary transition-colors">
             <span class="material-symbols-outlined">favorite</span>

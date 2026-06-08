@@ -5,7 +5,7 @@ let queueMode = false;
 
 const queueStorageKey = "zhou-media-queue";
 
-// Top-level songs list 
+// Top-level songs list
 const defaultSongs = [
   {
     image: "./css/audio/cover/luther-cover.jpg",
@@ -262,7 +262,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   } catch (e) {
-    // ignore if URL parsing isn't available 
+    // ignore if URL parsing isn't available
   }
 
   // attach events (guard if buttons are present)
@@ -416,21 +416,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setInterval(moveSlider, 100);
 
+  document
+    .getElementById("share-button")
+    ?.addEventListener("click", function () {
+      if (navigator.share) {
+        const song = songs[currentSongIndex];
+        navigator
+          .share({
+            title: song.name,
+            text: `Listening to ${song.name} by ${song.artist}`,
+            url: window.location.href,
+          })
+          .then(() => console.log("Shared successfully"))
+          .catch((error) => console.error("Error sharing:", error));
+      } else {
+        alert("Sharing is not supported in this browser.");
+      }
+    });
 
-  document.getElementById("share-button")?.addEventListener("click", function () {
-   if (navigator.share) {
-      const song = songs[currentSongIndex];
-      navigator
-        .share({
-          title: song.name,
-          text: `Listening to ${song.name} by ${song.artist}`,
-          url: window.location.href,
-        })
-        .then(() => console.log("Shared successfully"))
-        .catch((error) => console.error("Error sharing:", error));
-    } else {
-      alert("Sharing is not supported in this browser.");
-    }
-      });
-
+  //volume slider
+  const vol = document.getElementById("volume-slider");
+  const updateVolTrack = () => vol.style.setProperty("--val", vol.value + "%");
+  vol.addEventListener("input", updateVolTrack);
+  updateVolTrack();
 });
