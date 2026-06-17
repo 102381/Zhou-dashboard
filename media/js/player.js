@@ -176,6 +176,12 @@ const albums = [
 const audio = document.createElement("audio");
 let currentSongIndex = 0;
 
+audio.addEventListener("error", () => {
+  console.log("Audio error");
+  console.log(audio.error);
+  console.log(audio.src);
+});
+
 // Format time in seconds to MM:SS or H:MM:SS format
 function formatTime(seconds) {
   if (!seconds || isNaN(seconds)) return "0:00";
