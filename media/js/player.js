@@ -375,10 +375,10 @@ document.addEventListener("DOMContentLoaded", function () {
       const li = document.createElement("li");
       li.className =
         "flex items-center justify-between p-3 bg-surface-container-low rounded";
-      li.draggable = true;
+      li.draggable = true; // Make draggable 
 
       if (index === currentSongIndex) {
-        li.classList.add("border", "border-primary");
+        li.classList.add("border", "border-primary"); // visibility for current song in queue
       }
       li.innerHTML = `<span>${index + 1}. ${song.name} — ${song.artist}</span>`;
       li.addEventListener("click", function () {
@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Drag events
       li.addEventListener("dragstart", function () {
-        dragSrcIndex = index;
+        dragSrcIndex = index;   // Remember which song we're dragging
         li.classList.add("opacity-50");
       });
 
@@ -398,7 +398,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       li.addEventListener("dragover", function (e) {
-        e.preventDefault(); // allow drop
+        e.preventDefault();  // REQUIRED
         li.classList.add("border-t-2", "border-primary");
       });
 
@@ -410,11 +410,11 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         li.classList.remove("border-t-2", "border-primary");
 
-        if (dragSrcIndex === null || dragSrcIndex === index) return;
+        if (dragSrcIndex === null || dragSrcIndex === index) return; // Prevent dropping on itself
 
         // Reorder songs array
-        const draggedSong = songs.splice(dragSrcIndex, 1)[0];
-        songs.splice(index, 0, draggedSong);
+        const draggedSong = songs.splice(dragSrcIndex, 1)[0]; // Remove from old position
+        songs.splice(index, 0, draggedSong); //add to new position
 
         // Keep currentSongIndex pointing at the same song after reorder
         if (currentSongIndex === dragSrcIndex) {
@@ -438,13 +438,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  //
   if (songSlider) {
     audio.addEventListener("loadedmetadata", function () {
-      songSlider.max = Math.ceil(audio.duration);
+      songSlider.max = Math.ceil(audio.duration); //set the max value of the slider to song duration 
       songSlider.value = 0;
-      if (currentTimeDisplay) currentTimeDisplay.innerText = "0:00";
+      if (currentTimeDisplay) currentTimeDisplay.innerText = "0:00"; 
       if (totalTimeDisplay)
-        totalTimeDisplay.innerText = formatTime(audio.duration);
+        totalTimeDisplay.innerText = formatTime(audio.duration); //shows time like 3:45 instead of '225 seconds'
     });
 
     songSlider.addEventListener("change", function () {
@@ -468,9 +469,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setInterval(moveSlider, 100);
 
+  //share song 
   document
     .getElementById("share-button")
-    ?.addEventListener("click", function () {
+    ?.addEventListener("click", function () { //? so it doesnt crash if button is missing 
       if (navigator.share) {
         const song = songs[currentSongIndex];
         navigator
