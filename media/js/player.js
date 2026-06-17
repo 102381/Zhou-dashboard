@@ -438,7 +438,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
-  //
+  //song duration slider
   if (songSlider) {
     audio.addEventListener("loadedmetadata", function () {
       songSlider.max = Math.ceil(audio.duration); //set the max value of the slider to song duration 
@@ -489,8 +489,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
   //volume slider
-  const vol = document.getElementById("volume-slider");
-  const updateVolTrack = () => vol.style.setProperty("--val", vol.value + "%");
-  vol.addEventListener("input", updateVolTrack);
-  updateVolTrack();
+const vol = document.getElementById("volume-slider");
+
+if (vol) {
+  function updateVol() {
+    audio.volume = vol.value / 100;
+    vol.style.setProperty("--val", vol.value + "%");
+  }
+
+  vol.addEventListener("input", updateVol);
+  updateVol();
+}
 });
