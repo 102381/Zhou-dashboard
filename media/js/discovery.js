@@ -15,7 +15,7 @@ const albums = [
       },
       {
         image: "../css/audio/cover/luther-cover.jpg",
-        name: "afterglow",
+        name: "i",
         artist: "kendrick",
         Audio: "../css/audio/luther-kendrick.mp3",
       },

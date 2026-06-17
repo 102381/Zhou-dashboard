@@ -29,7 +29,7 @@ const defaultSongs = [
     image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
     name: "Nevermind",
     artist: "Nirvana",
-    Audio: "./css/audio/luther-kendrick.mp3",
+    Audio: "./css/audio/viagra-boys.mp3",
   },
 ];
 
@@ -108,7 +108,7 @@ const albums = [
       },
       {
         image: "./css/audio/cover/luther-cover.jpg",
-        name: "afterglow",
+        name: "i",
         artist: "kendrick",
         Audio: "./css/audio/luther-kendrick.mp3",
       },
@@ -161,13 +161,13 @@ const albums = [
         image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
         name: "smells like teen spirit",
         artist: "Nirvana",
-        Audio: "./css/audio/viagra-boys.mp3",
+        Audio: "media/css/audio/viagra-boys.mp3",
       },
       {
         image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
         name: "come as you are",
         artist: "Nirvana",
-        Audio: "./css/audio/viagra-boys.mp3",
+        Audio: "media/css/audio/viagra-boys.mp3",
       },
     ],
   },
@@ -180,7 +180,9 @@ audio.addEventListener("error", () => {
   console.log("Audio error");
   console.log(audio.error);
   console.log(audio.src);
+  console.log("Now playing:", song.name, song.Audio);
 });
+
 
 // Format time in seconds to MM:SS or H:MM:SS format
 function formatTime(seconds) {
