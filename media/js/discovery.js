@@ -24,13 +24,13 @@ const albums = [
   {
     songs: [
       {
-        image: "../css/audio/cover/RHCP-mother's-milk-cover.webp",
+        image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
         name: "dani california",
         artist: "RHCP",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
       {
-        image: "../css/audio/cover/RHCP-mother's-milk-cover.webp",
+        image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
         name: "under the bridge",
         artist: "RHCP",
         Audio: "../css/audio/luther-kendrick.mp3",
@@ -49,22 +49,6 @@ const albums = [
         image: "../css/audio/cover/Cave-world-viagra-boys-cover.png",
         name: "release",
         artist: "Viagra Boys",
-        Audio: "../css/audio/viagra-boys.mp3",
-      },
-    ],
-  },
-  {
-    songs: [
-      {
-        image: "../css/audio/cover/nevermind-nirvana-album-cover.jpg",
-        name: "smells like teen spirit",
-        artist: "Nirvana",
-        Audio: "../css/audio/viagra-boys.mp3",
-      },
-      {
-        image: "../css/audio/cover/nevermind-nirvana-album-cover.jpg",
-        name: "come as you are",
-        artist: "Nirvana",
         Audio: "../css/audio/viagra-boys.mp3",
       },
     ],

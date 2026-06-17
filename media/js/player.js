@@ -24,13 +24,7 @@ const defaultSongs = [
     name: "Cave World",
     artist: "Viagra Boys",
     Audio: "./css/audio/viagra-boys.mp3",
-  },
-  {
-    image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
-    name: "Nevermind",
-    artist: "Nirvana",
-    Audio: "./css/audio/viagra-boys.mp3",
-  },
+  }
 ];
 
 function songKey(song) {
@@ -152,36 +146,10 @@ const albums = [
       },
     ],
   },
-  {
-    title: "Nevermind",
-    artist: "Nirvana",
-    image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
-    songs: [
-      {
-        image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
-        name: "smells like teen spirit",
-        artist: "Nirvana",
-        Audio: "media/css/audio/viagra-boys.mp3",
-      },
-      {
-        image: "./css/audio/cover/nevermind-nirvana-album-cover.jpg",
-        name: "come as you are",
-        artist: "Nirvana",
-        Audio: "media/css/audio/viagra-boys.mp3",
-      },
-    ],
-  },
 ];
 
 const audio = document.createElement("audio");
 let currentSongIndex = 0;
-
-audio.addEventListener("error", () => {
-  console.log("Audio error");
-  console.log(audio.error);
-  console.log(audio.src);
-  console.log("Now playing:", song.name, song.Audio);
-});
 
 
 // Format time in seconds to MM:SS or H:MM:SS format
