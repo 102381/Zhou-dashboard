@@ -1,5 +1,31 @@
 // Events List View Module
 // Shows all events in a simple list format
+function searchEvents(searchTerm) {
+  searchTerm = searchTerm.toLowerCase();
+
+  return events.filter((event) => {
+    const titleMatch = event.title.toLowerCase().includes(searchTerm);
+
+    const categoryMatch =
+      event.categoryId && event.categoryId.toLowerCase().includes(searchTerm);
+
+    const holidayMatch = searchTerm === "holiday" && event.isHoliday;
+
+    const vacationMatch =
+      searchTerm === "vacation" &&
+      [
+        "Herfstvakantie",
+        "Kerstvakantie",
+        "Voorjaarsvakantie",
+        "Pasen",
+        "Meivakantie",
+        "Pinksteren",
+        "Zomervakantie",
+      ].includes(event.title);
+
+    return titleMatch || categoryMatch || holidayMatch || vacationMatch;
+  });
+}
 
 function loadEventsListView() {
   const eventsList = document.getElementById("eventsList");
@@ -57,9 +83,9 @@ function loadEventsListView() {
         <p>${formattedDate}</p>
       </div>
       <button class="event-action-btn" onclick="deleteScheduleEvent('${event.date}', '${event.title.replace(
-      /'/g,
-      "\\'"
-    )}')">
+        /'/g,
+        "\\'",
+      )}')">
         <span class="material-symbols-outlined">close</span>
       </button>
     `;
@@ -69,7 +95,7 @@ function loadEventsListView() {
 }
 
 function initEventsListView() {
-  const eventsSearch = document.getElementById("eventsSearch");
+  const eventsSearch = document.getElementById("searchbar");  
   if (eventsSearch) {
     eventsSearch.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
@@ -80,6 +106,8 @@ function initEventsListView() {
         const title = el.querySelector("h3").textContent.toLowerCase();
         el.style.display = title.includes(searchTerm) ? "flex" : "none";
       });
+      
     });
   }
+  
 }

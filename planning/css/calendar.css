@@ -102,3 +102,45 @@ body {
 .event.vacation:hover {
   background: #f57c00;
 }
+
+#eventsList {
+  height: 100vh !important;
+  color: #ffffff;
+  flex: 1 !important;
+  padding: 30px !important;
+  overflow-y: auto !important;
+  min-height: 0 !important;
+  scroll-behavior: smooth;
+}
+
+#eventsList {
+  overflow-y: auto;
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent; /* Firefox */
+}
+
+/* Chrome, Edge, Safari */
+#eventsList::-webkit-scrollbar {
+  width: 10px;
+}
+
+#eventsList::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#eventsList::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+}
+
+#eventsList::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.55);
+  background-clip: content-box;
+}
+
+#eventsList::-webkit-scrollbar-thumb:active {
+  background: rgba(255, 255, 255, 0.75);
+  background-clip: content-box;
+}
