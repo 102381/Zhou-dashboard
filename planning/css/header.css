@@ -22,7 +22,7 @@
 }
 
 #monthDisplay {
-  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
   font-size: 1.8rem;
   font-weight: 700;
   letter-spacing: -0.5px;
@@ -103,4 +103,8 @@
 .today-btn:hover {
   background: #1c1c1c;
   border-color: #3a3a3a;
+}
+
+#events-btn-1 {
+  background: none !important;
 }
