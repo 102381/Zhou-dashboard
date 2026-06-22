@@ -122,7 +122,7 @@
 }
 
 .schedule-event.event-vacation {
-  border-left-color: #ff6b6b;
+  border-left-color: #0d0057;
   background: rgba(255, 107, 107, 0.05);
 }
 
@@ -329,7 +329,7 @@
 }
 
 .day-event-item.event-vacation {
-  border-left-color: #ff6b6b;
+  border-left-color: #0d0057;
   background: rgba(255, 107, 107, 0.05);
 }
 
@@ -390,10 +390,11 @@
 }
 
 .events-list-item.event-vacation {
-  border-left-color: #ff6b6b;
-  background: rgba(255, 107, 107, 0.05);
+  border-left-color: #0d0057;
 }
-
+.events-list-item.event-vacation h3 {
+  color: #d3b52f;
+}
 .events-list-item-content h3 {
   font-size: 1rem;
   margin-bottom: 4px;

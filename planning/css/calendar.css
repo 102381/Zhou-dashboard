@@ -115,11 +115,10 @@ body {
 
 #eventsList {
   overflow-y: auto;
-  scrollbar-width: thin; /* Firefox */
-  scrollbar-color: rgba(255, 255, 255, 0.4) transparent; /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
 }
 
-/* Chrome, Edge, Safari */
 #eventsList::-webkit-scrollbar {
   width: 10px;
 }

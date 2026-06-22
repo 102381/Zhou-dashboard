@@ -10,13 +10,13 @@ const albums = [
       {
         image: "../css/audio/cover/luther-cover.jpg",
         name: "luther",
-        artist: "kendrick",
+        artist: "Kendrick Lamar",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
       {
         image: "../css/audio/cover/luther-cover.jpg",
         name: "i",
-        artist: "kendrick",
+        artist: "Kendrick Lamar",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
     ],
@@ -26,13 +26,13 @@ const albums = [
       {
         image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
         name: "dani california",
-        artist: "RHCP",
+        artist: "Red hot Chili peppers",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
       {
         image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
         name: "under the bridge",
-        artist: "RHCP",
+        artist: "Red hot Chili peppers",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
     ],
