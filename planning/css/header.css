@@ -108,3 +108,9 @@
 #events-btn-1 {
   background: none !important;
 }
+
+#events-btn-1:hover {
+  background: rgb(255, 255, 255) !important;
+  transform: translateY(-1px);
+  transition: 2ms;
+}
