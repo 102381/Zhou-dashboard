@@ -26,5 +26,5 @@ document.addEventListener("DOMContentLoaded", function () {
   // Load and render calendar (default view)
   loadCalendar();
 
-  console.log("App initialized successfully");
+  // console.log("App initialized successfully");
 });

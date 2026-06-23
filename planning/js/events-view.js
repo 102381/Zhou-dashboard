@@ -25,21 +25,12 @@ function toggleEventsView() {
 }
 
 function searchEvents(searchTerm) {
-  const searchInput = document.getElementById("eventsSearch");
-
-  searchInput.addEventListener("input", (event) => {
-    const searchTerm = event.target.value;
-    const results = searchEvents(searchTerm);
-  });
-
   searchTerm = searchTerm.toLowerCase();
 
   return events.filter((event) => {
     const titleMatch = event.title.toLowerCase().includes(searchTerm);
-
     const categoryMatch =
       event.categoryId && event.categoryId.toLowerCase().includes(searchTerm);
-
     const holidayMatch = searchTerm === "holiday" && event.isHoliday;
 
     const vacationMatch =
