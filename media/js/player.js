@@ -455,8 +455,21 @@ document.addEventListener("DOMContentLoaded", function () {
         .writeText(shareText)
         .then(() => {
           console.log("Copied to clipboard");
-          // Optional: brief visual feedback
-          alert("Copied!");
+
+          const popup = document.createElement("div");
+          popup.textContent = "Copied!";
+          popup.className = "popup";
+
+          document.body.appendChild(popup);
+
+          setTimeout(() => {
+            popup.classList.add("show");
+          }, 10);
+
+          setTimeout(() => {
+            popup.classList.remove("show");
+            setTimeout(() => popup.remove(), 300);
+          }, 2000);
         })
         .catch((error) => console.error("Error copying:", error));
     });
