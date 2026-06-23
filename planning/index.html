@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -94,15 +94,24 @@
           <div class="header-right">
             <div class="search-bar">
               <span class="material-symbols-outlined">search</span>
-              <input type="text" id="searchbar" placeholder="Search events..." />
+              <input
+                type="text"
+                id="searchbar"
+                placeholder="Search events..."
+              />
             </div>
             <button class="today-btn">
               <span class="material-symbols-outlined">calendar_today</span>
             </button>
-            <a href="#" class="bottom-nav-item active" data-view="events" id="events-btn-1">
-          <span class="material-symbols-outlined">list_alt</span>
-          <span>Events</span>
-        </a>
+            <a
+              href="#"
+              class="bottom-nav-item active"
+              data-view="events"
+              id="events-btn-1"
+            >
+              <span class="material-symbols-outlined">list_alt</span>
+              <span>Events</span>
+            </a>
           </div>
         </header>
 
@@ -158,7 +167,7 @@
           <div id="categoriesList" class="categories-list"></div>
 
           <!-- Add Category Modal -->
-          <div id="categoryModal" class="modal hidden">
+          <div id="categoryModal" class="modal">
             <h2>New Category</h2>
             <div class="modal-content">
               <input
@@ -338,6 +347,18 @@
         </div>
       </div>
     </div>
+    <!-- Add Category Modal -->
+    <div id="categoryModal" class="modal hidden">
+      <h2>New Category</h2>
+      <div class="modal-content">
+        <input type="text" id="categoryNameInput" placeholder="Category Name" />
+        <input type="color" id="categoryColorInput" value="#ffffff" />
+        <div class="modal-actions">
+          <button id="saveCategoryBtn" class="btn-save">Save</button>
+          <button id="cancelCategoryBtn" class="btn-cancel">Cancel</button>
+        </div>
+      </div>
+    </div>
 
     <div id="deleteEventModal" class="modal">
       <h2>Event</h2>
@@ -361,7 +382,6 @@
     <script src="./js/schedule.js"></script>
     <script src="./js/day.js"></script>
     <script src="./js/events-view.js"></script>
-    <script src="./js/profile.js"></script>
     <script src="./js/categories.js"></script>
     <script src="./js/settings.js"></script>
     <script src="./js/view-switcher.js"></script>

@@ -33,7 +33,7 @@
   color: #ffffff;
   padding: 20px;
   font-size: 1.1rem;
-  font-family: 'Atkinson Hyperlegible Next', sans-serif;
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
   font-weight: 700;
   margin: 0;
   border-bottom: 1px solid #3a3a3a;
@@ -57,7 +57,12 @@
   gap: 8px;
   margin-top: 8px;
 }
-
+.modal.show {
+  display: block !important;
+}
+.modal-backdrop.show {
+  display: block;
+}
 .modal.hidden {
   display: none !important;
 }

@@ -83,7 +83,7 @@ function loadCategoriesView() {
         </div>
       </div>
       <div class="category-actions">
-        <button class="edit-category-btn" onclick="editCategory('${category.id}')">
+        <button class="edit-category-btn" data-category-id="${category.id}">
           <span class="material-symbols-outlined">edit</span>
         </button>
         <button class="delete-category-btn" onclick="deleteFromCategories('${category.id}')">
@@ -123,11 +123,13 @@ function deleteFromCategories(categoryId) {
 
 function editCategory(categoryId) {
   const category = categories.find((c) => c.id === categoryId);
+
   if (category) {
     const modal = document.getElementById("categoryModal");
+    const backdrop = document.getElementById("modalBackDrop");
     const nameInput = document.getElementById("categoryNameInput");
     const colorInput = document.getElementById("categoryColorInput");
-
+    console.log("Modal element:", modal);
     nameInput.value = category.name;
     colorInput.value = category.color;
 
@@ -135,8 +137,11 @@ function editCategory(categoryId) {
     nameInput.dataset.categoryId = categoryId;
 
     if (modal) {
-      modal.classList.remove("hidden");
+      console.log("Removing hidden class");
+      modal.classList.add("show");
       nameInput.focus();
+    } else {
+      console.log("Modal element not found!");
     }
   }
 }
@@ -153,7 +158,7 @@ function openAddCategoryModal() {
   }
 
   if (modal) {
-    modal.classList.remove("hidden");
+    modal.classList.add("show");
     nameInput.focus();
   }
 }
@@ -161,7 +166,7 @@ function openAddCategoryModal() {
 function closeCategoryModal() {
   const modal = document.getElementById("categoryModal");
   if (modal) {
-    modal.classList.add("hidden");
+    modal.classList.remove("show");
   }
 }
 
@@ -214,6 +219,19 @@ function initCategoriesView() {
     categoryNameInput.addEventListener("keypress", (e) => {
       if (e.key === "Enter") {
         saveCategoryModal();
+      }
+    });
+  }
+
+  // Event delegation for edit button
+  const categoriesList = document.getElementById("categoriesList");
+  if (categoriesList) {
+    categoriesList.addEventListener("click", (e) => {
+      const editBtn = e.target.closest(".edit-category-btn");
+      if (editBtn) {
+        const cId = editBtn.dataset.categoryId;
+        console.log("Category ID:", cId);
+        editCategory(cId);
       }
     });
   }
