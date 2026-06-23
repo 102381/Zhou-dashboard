@@ -1,5 +1,29 @@
 // Events List View Module
 // Shows all events in a simple list format
+
+let eventsViewOpen = false; // Track if events view is open
+
+function toggleEventsView() {
+  const eventsView = document.getElementById("events-view");
+  const eventsBtn = document.getElementById("events-btn-1");
+  const calendarSection = document.getElementById("months-view");
+
+  if (!eventsView) return;
+
+  eventsViewOpen = !eventsViewOpen;
+
+  if (eventsViewOpen) {
+    eventsView.classList.remove("hidden");
+    calendarSection.classList.add("hidden");
+    eventsBtn.classList.add("active");
+    loadEventsListView();
+  } else {
+    eventsView.classList.add("hidden");
+    calendarSection.classList.remove("hidden");
+    eventsBtn.classList.remove("active");
+  }
+}
+
 function searchEvents(searchTerm) {
   searchTerm = searchTerm.toLowerCase();
 
@@ -95,7 +119,16 @@ function loadEventsListView() {
 }
 
 function initEventsListView() {
-  const eventsSearch = document.getElementById("searchbar");  
+  const eventsSearch = document.getElementById("searchbar");
+  const eventsBtn = document.getElementById("events-btn-1");
+
+  if (eventsBtn) {
+    eventsBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      toggleEventsView();
+    });
+  }
+
   if (eventsSearch) {
     eventsSearch.addEventListener("input", (e) => {
       const searchTerm = e.target.value.toLowerCase();
@@ -106,8 +139,6 @@ function initEventsListView() {
         const title = el.querySelector("h3").textContent.toLowerCase();
         el.style.display = title.includes(searchTerm) ? "flex" : "none";
       });
-      
     });
   }
-  
 }

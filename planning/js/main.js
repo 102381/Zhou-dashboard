@@ -20,6 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Initialize all buttons
   initializeButtons();
 
+  // Initialize events list view
+  initEventsListView();
+
   // Load and render calendar (default view)
   loadCalendar();
 
