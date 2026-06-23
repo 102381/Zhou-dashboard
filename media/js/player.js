@@ -24,7 +24,7 @@ const defaultSongs = [
     name: "Cave World",
     artist: "Viagra Boys",
     Audio: "./css/audio/viagra-boys.mp3",
-  }
+  },
 ];
 
 function songKey(song) {
@@ -150,7 +150,6 @@ const albums = [
 
 const audio = document.createElement("audio");
 let currentSongIndex = 0;
-
 
 // Format time in seconds to MM:SS or H:MM:SS format
 function formatTime(seconds) {
@@ -351,7 +350,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const li = document.createElement("li");
       li.className =
         "flex items-center justify-between p-3 bg-surface-container-low rounded";
-      li.draggable = true; // Make draggable 
+      li.draggable = true; // Make draggable
 
       if (index === currentSongIndex) {
         li.classList.add("border", "border-primary"); // visibility for current song in queue
@@ -365,7 +364,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Drag events
       li.addEventListener("dragstart", function () {
-        dragSrcIndex = index;   // Remember which song we're dragging
+        dragSrcIndex = index; // Remember which song we're dragging
         li.classList.add("opacity-50");
       });
 
@@ -374,7 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
       });
 
       li.addEventListener("dragover", function (e) {
-        e.preventDefault();  // REQUIRED
+        e.preventDefault(); // REQUIRED
         li.classList.add("border-t-2", "border-primary");
       });
 
@@ -417,9 +416,9 @@ document.addEventListener("DOMContentLoaded", function () {
   //song duration slider
   if (songSlider) {
     audio.addEventListener("loadedmetadata", function () {
-      songSlider.max = Math.ceil(audio.duration); //set the max value of the slider to song duration 
+      songSlider.max = Math.ceil(audio.duration); //set the max value of the slider to song duration
       songSlider.value = 0;
-      if (currentTimeDisplay) currentTimeDisplay.innerText = "0:00"; 
+      if (currentTimeDisplay) currentTimeDisplay.innerText = "0:00";
       if (totalTimeDisplay)
         totalTimeDisplay.innerText = formatTime(audio.duration); //shows time like 3:45 instead of '225 seconds'
     });
@@ -445,35 +444,33 @@ document.addEventListener("DOMContentLoaded", function () {
 
   setInterval(moveSlider, 100);
 
-  //share song 
+  //share song
   document
     .getElementById("share-button")
-    ?.addEventListener("click", function () { //? so it doesnt crash if button is missing 
-      if (navigator.share) {
-        const song = songs[currentSongIndex];
-        navigator
-          .share({
-            title: song.name,
-            text: `Listening to ${song.name} by ${song.artist}`,
-            url: window.location.href,
-          })
-          .then(() => console.log("Shared successfully"))
-          .catch((error) => console.error("Error sharing:", error));
-      } else {
-        alert("Sharing is not supported in this browser.");
-      }
+    ?.addEventListener("click", function () {
+      const song = songs[currentSongIndex];
+      const shareText = `Listening to ${song.name} by ${song.artist} - ${window.location.href}`;
+
+      navigator.clipboard
+        .writeText(shareText)
+        .then(() => {
+          console.log("Copied to clipboard");
+          // Optional: brief visual feedback
+          alert("Copied!");
+        })
+        .catch((error) => console.error("Error copying:", error));
     });
 
   //volume slider
-const vol = document.getElementById("volume-slider");
+  const vol = document.getElementById("volume-slider");
 
-if (vol) {
-  function updateVol() {
-    audio.volume = vol.value / 100;
-    vol.style.setProperty("--val", vol.value + "%");
+  if (vol) {
+    function updateVol() {
+      audio.volume = vol.value / 100;
+      vol.style.setProperty("--val", vol.value + "%");
+    }
+
+    vol.addEventListener("input", updateVol);
+    updateVol();
   }
-
-  vol.addEventListener("input", updateVol);
-  updateVol();
-}
 });
