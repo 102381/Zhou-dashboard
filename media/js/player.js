@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", function () {
     .getElementById("share-button")
     ?.addEventListener("click", function () {
       const song = songs[currentSongIndex];
-      const shareText = `Listening to ${song.name} by ${song.artist} - ${window.location.href}`;
+      const shareText = `Listening to ${song.name} by ${song.artist}`;
 
       navigator.clipboard
         .writeText(shareText)
