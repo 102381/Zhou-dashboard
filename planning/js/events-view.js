@@ -25,6 +25,13 @@ function toggleEventsView() {
 }
 
 function searchEvents(searchTerm) {
+  const searchInput = document.getElementById("eventsSearch");
+
+  searchInput.addEventListener("input", (event) => {
+    const searchTerm = event.target.value;
+    const results = searchEvents(searchTerm);
+  });
+
   searchTerm = searchTerm.toLowerCase();
 
   return events.filter((event) => {
