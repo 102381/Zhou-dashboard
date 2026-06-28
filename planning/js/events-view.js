@@ -74,9 +74,9 @@ function loadEventsListView() {
   sortedEvents.forEach((event) => {
     const [day, month, year] = event.date.split("/").map(Number);
     const dateObj = new Date(year, month - 1, day);
-    const formattedDate = dateObj.toLocaleDateString("en-US", {
-      month: "short",
+    const formattedDate = dateObj.toLocaleDateString("nl-NL", {
       day: "numeric",
+       month: "short",
       year: "numeric",
     });
 
@@ -108,7 +108,7 @@ function loadEventsListView() {
         /'/g,
         "\\'",
       )}')">
-        <span class="material-symbols-outlined">close</span>
+        <div class="material-symbols-outlined">close</div>
       </button>
     `;
 
