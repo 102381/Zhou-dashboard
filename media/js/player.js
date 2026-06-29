@@ -2,7 +2,6 @@
 let shuffleMode = false;
 let repeatMode = false;
 let queueMode = false;
-
 const queueStorageKey = "zhou-media-queue";
 
 // Top-level songs list
@@ -252,18 +251,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (nextBtn) {
-    nextBtn.addEventListener("click", function () {
-      if (shuffleMode) {
-        currentSongIndex = Math.floor(Math.random() * songs.length);
-      } else {
-        if (currentSongIndex == songs.length - 1) {
-          return;
-        }
-        currentSongIndex++;
-      }
-      updateSong();
-    });
-  }
+  nextBtn.addEventListener("click", function () {
+    if (shuffleMode) {
+      currentSongIndex = Math.floor(Math.random() * songs.length);
+    } else {
+      if (currentSongIndex == songs.length - 1) return;
+      currentSongIndex++;
+    }
+    updateSong();
+  });
+}
 
   if (playpauseBtn) {
     playpauseBtn.addEventListener("click", function () {
@@ -281,6 +278,9 @@ document.addEventListener("DOMContentLoaded", function () {
   if (shuffleBtn) {
     shuffleBtn.addEventListener("click", function () {
       shuffleMode = !shuffleMode;
+
+      console.log("shuffle clicked:", shuffleMode);
+
       shuffleBtn.style.opacity = shuffleMode ? "1" : "0.5";
     });
   }
