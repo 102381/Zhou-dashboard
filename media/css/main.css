@@ -85,11 +85,6 @@ input[type="range"]#volume-slider {
   width: 96px;
   height: 4px;
   border-radius: 9999px;
-  background: linear-gradient(
-    to right,
-    #b8c3ff var(--val, 75%),
-    #2a3242 var(--val, 75%)
-  );
   outline: none;
   cursor: pointer;
 }
@@ -115,4 +110,7 @@ input[type="range"]#volume-slider::-moz-range-thumb {
 input[type="range"]#volume-slider:hover::-webkit-slider-thumb,
 input[type="range"]#volume-slider:hover::-moz-range-thumb {
   transform: scale(1.25);
+}
+#song-slider {
+  background-color: #837e7e54 !important;
 }
