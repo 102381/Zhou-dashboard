@@ -1,18 +1,18 @@
 /* sidebar */
 
 :root {
-  --nexus-accent: #131b2e;
-  --nexus-text: #191c1e;
-  --nexus-muted: #5f6368;
-  --nexus-outline: #c6c6cd;
-  --nexus-surface-soft: #f2f4f6;
+  --nexus-accent: #b8c3ff;
+  --nexus-text: #f3f4f6;
+  --nexus-muted: #aab2c5;
+  --nexus-outline: #2a3242;
+  --nexus-surface-soft: #151922;
 }
 
 .sidebar {
   display: flex;
   flex-direction: column;
   width: 256px;
-  background: rgba(242, 244, 246, 0.92);
+  background: rgba(10, 12, 16, 0.96);
   border-right: 1px solid var(--nexus-outline);
   padding: 32px 16px 24px;
   position: fixed;
@@ -67,7 +67,11 @@
   color: var(--nexus-muted);
   text-decoration: none;
   font-weight: 700;
-  transition: background-color 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  transition:
+    background-color 160ms ease,
+    color 160ms ease,
+    transform 160ms ease,
+    box-shadow 160ms ease;
 }
 
 .site-nav-link span:last-child {
@@ -77,19 +81,19 @@
 }
 
 .site-nav-link:hover {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--nexus-text);
   transform: translateY(-1px);
 }
 
 .site-nav-link.active {
   background: var(--nexus-accent);
-  color: #ffffff;
-  box-shadow: 0 14px 30px rgba(19, 27, 46, 0.22);
+  color: #000000;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
 }
 
 .site-nav-link.active:hover {
-  color: #ffffff;
+  color: #000000;
 }
 
 .site-nav-link .material-symbols-outlined {
@@ -98,7 +102,7 @@
 
 .sidebar-profile {
   padding: 20px 16px 0;
-  border-top: 1px solid rgba(198, 198, 205, 0.7);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   margin-top: 16px;
   display: flex;
   align-items: center;
@@ -111,9 +115,9 @@
   height: 36px;
   border-radius: 9999px;
   overflow: hidden;
-  background: rgba(230, 232, 234, 0.8);
+  background: #151922;
   flex-shrink: 0;
-  border: 1px solid rgba(198, 198, 205, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .profile-avatar img {
@@ -136,4 +140,49 @@
 .profile-plan {
   color: var(--nexus-muted);
   font-size: 0.75rem;
+}
+
+/* Light Mode Theme */
+html:not(.dark) {
+  --nexus-accent: #131b2e;
+  --nexus-text: #191c1e;
+  --nexus-muted: #49454e;
+  --nexus-outline: #e6e8ea;
+  --nexus-surface-soft: #e8f0f5;
+}
+
+html:not(.dark) .sidebar {
+  background: rgba(255, 255, 255, 0.96);
+  border-right: 1px solid #e6e8ea;
+}
+
+html:not(.dark) .sidebar-branding h1 {
+  color: #191c1e;
+}
+
+html:not(.dark) .sidebar-branding p {
+  color: #999999;
+}
+
+html:not(.dark) .site-nav-link {
+  color: #49454e;
+}
+
+html:not(.dark) .site-nav-link:hover {
+  background: rgba(19, 27, 46, 0.06);
+  color: #191c1e;
+}
+
+html:not(.dark) .site-nav-link.active {
+  background: #131b2e;
+  color: #ffffff;
+}
+
+html:not(.dark) .profile-avatar {
+  background: #e8f0f5;
+  border: 1px solid #e6e8ea;
+}
+
+html:not(.dark) .profile-name {
+  color: #191c1e;
 }

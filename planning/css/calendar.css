@@ -18,13 +18,13 @@ body {
   gap: 8px;
   margin-bottom: 20px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #1c1c1c;
+  border-bottom: 1px solid #2a3242;
 }
 
 .weekdays div {
   text-align: center;
   font-weight: 600;
-  color: #666666;
+  color: #aab2c5;
   font-size: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -44,8 +44,8 @@ body {
 .day {
   min-height: 0;
   padding: 12px;
-  background: #1c1c1c;
-  border: 1px solid #2a2a2a;
+  background: #0f1115;
+  border: 1px solid #2a3242;
   border-radius: 4px;
   cursor: pointer;
   transition: all 0.3s ease;
@@ -55,23 +55,23 @@ body {
   position: relative;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #ffffff;
+  color: #f3f4f6;
 }
 
 .day.today {
-  background: #2a3f5f;
-  border: 2px solid #4a7ba7;
-  box-shadow: 0 0 8px rgba(74, 123, 167, 0.3);
+  background: #151922;
+  border: 2px solid #b8c3ff;
+  box-shadow: 0 0 8px rgba(184, 195, 255, 0.2);
 }
 
 .day:hover:not(.padding) {
-  border-color: #3a3a3a;
-  background: #2a2a2a;
+  border-color: #3a455c;
+  background: #151922;
 }
 
 .day.padding {
-  background: #0d0d0d;
-  border-color: #0d0d0d;
+  background: #050608;
+  border-color: #050608;
   cursor: default;
   opacity: 0.3;
 }
@@ -79,8 +79,8 @@ body {
 .event {
   font-size: 0.7rem;
   padding: 6px 8px;
-  background: #333333;
-  color: #ffffff;
+  background: #1b2233;
+  color: #f3f4f6;
   border-radius: 2px;
   margin-top: 6px;
   overflow: hidden;
@@ -91,7 +91,7 @@ body {
 }
 
 .event:hover {
-  background: #444444;
+  background: #2a3242;
 }
 
 .event.vacation {
@@ -105,7 +105,7 @@ body {
 
 #eventsList {
   height: 100vh !important;
-  color: #ffffff;
+  color: #f3f4f6;
   flex: 1 !important;
   padding: 30px !important;
   overflow-y: auto !important;
@@ -116,7 +116,7 @@ body {
 #eventsList {
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+  scrollbar-color: rgba(184, 195, 255, 0.4) transparent;
 }
 
 #eventsList::-webkit-scrollbar {
@@ -128,18 +128,84 @@ body {
 }
 
 #eventsList::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.35);
+  background: rgba(184, 195, 255, 0.22);
   border-radius: 999px;
   border: 2px solid transparent;
   background-clip: content-box;
 }
 
 #eventsList::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.55);
+  background: rgba(184, 195, 255, 0.34);
   background-clip: content-box;
 }
 
 #eventsList::-webkit-scrollbar-thumb:active {
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(184, 195, 255, 0.46);
   background-clip: content-box;
+}
+
+/* Light Mode Theme */
+html:not(.dark) .weekdays {
+  border-bottom: 1px solid #e6e8ea;
+}
+
+html:not(.dark) .weekdays div {
+  color: #49454e;
+}
+
+html:not(.dark) .day {
+  background: #ffffff;
+  border: 1px solid #e6e8ea;
+  color: #191c1e;
+}
+
+html:not(.dark) .day.today {
+  background: #e8f0f5;
+  border: 2px solid #131b2e;
+  box-shadow: 0 0 8px rgba(19, 27, 46, 0.2);
+}
+
+html:not(.dark) .day:hover:not(.padding) {
+  border-color: #ccc;
+  background: #f0f1f3;
+}
+
+html:not(.dark) .day.padding {
+  background: #fafbfc;
+  border-color: #fafbfc;
+}
+
+html:not(.dark) .event {
+  background: #e8f0f5;
+  color: #191c1e;
+}
+
+html:not(.dark) .event:hover {
+  background: #d0dce8;
+}
+
+html:not(.dark) .event.vacation {
+  background: #ffb366;
+  color: #000000;
+}
+
+html:not(.dark) .event.vacation:hover {
+  background: #ff9933;
+}
+
+html:not(.dark) #eventsList {
+  color: #191c1e;
+  scrollbar-color: rgba(19, 27, 46, 0.2) transparent;
+}
+
+html:not(.dark) #eventsList::-webkit-scrollbar-thumb {
+  background: rgba(19, 27, 46, 0.1);
+}
+
+html:not(.dark) #eventsList::-webkit-scrollbar-thumb:hover {
+  background: rgba(19, 27, 46, 0.2);
+}
+
+html:not(.dark) #eventsList::-webkit-scrollbar-thumb:active {
+  background: rgba(19, 27, 46, 0.3);
 }

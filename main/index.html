@@ -1,11 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 
-<html class="light" lang="en">
+<html class="dark" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Zhou Central Hub</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      // Apply saved theme before page renders
+      const saved = localStorage.getItem("theme");
+      if (saved === "light") {
+        document.documentElement.setAttribute("class", "");
+      }
+    </script>
     <link rel="icon" type="image/x-icon" href="./css/images/zhou.svg" />
     <link
       href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&amp;display=swap"
@@ -19,38 +26,8 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
-    <style>
-      .material-symbols-outlined {
-        font-variation-settings: "FILL" 0, "wght" 400, "GRAD" 0, "opsz" 24;
-      }
-      body {
-        font-family: "Atkinson Hyperlegible Next", sans-serif;
-        -webkit-font-smoothing: antialiased;
-      }
-
-      .sidebar-branding {
-        padding: 0 32px 24px;
-        margin-bottom: 24px;
-      }
-
-      .sidebar-branding h1 {
-        font-family: "Atkinson Hyperlegible Next", sans-serif;
-        font-size: 1.25rem;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-        margin-bottom: 8px;
-        color: #ffffff;
-      }
-
-      .sidebar-branding p {
-        font-size: 0.625rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        color: #666666;
-        margin-top: 4px;
-      }
-    </style>
     <link rel="stylesheet" href="./css/sidebar.css" />
+    <link rel="stylesheet" href="./css/main.css" />
     <script id="tailwind-config">
       tailwind.config = {
         darkMode: "class",
@@ -63,47 +40,47 @@
               "secondary-fixed-dim": "#b7c8e1",
               error: "#ba1a1a",
               "surface-dim": "#d8dadc",
-              "on-secondary": "#ffffff",
-              "surface-tint": "#565e74",
-              "error-container": "#ffdad6",
-              "on-secondary-container": "#54647a",
-              "surface-variant": "#e0e3e5",
-              "on-primary": "#ffffff",
-              "primary-fixed": "#dae2fd",
-              "surface-bright": "#f7f9fb",
-              "surface-container": "#eceef0",
-              "primary-container": "#131b2e",
-              "on-surface-variant": "#45464d",
-              "on-secondary-fixed": "#0b1c30",
-              tertiary: "#000000",
-              "on-tertiary-fixed": "#271901",
-              primary: "#000000",
-              "on-secondary-fixed-variant": "#38485d",
-              "on-background": "#191c1e",
-              "on-error": "#ffffff",
-              "on-primary-container": "#7c839b",
-              "outline-variant": "#c6c6cd",
-              "secondary-container": "#d0e1fb",
-              "on-error-container": "#93000a",
-              "surface-container-lowest": "#ffffff",
-              "tertiary-fixed": "#fcdeb5",
-              secondary: "#505f76",
-              surface: "#f7f9fb",
-              "on-tertiary-container": "#98805d",
-              background: "#f7f9fb",
-              "inverse-primary": "#bec6e0",
-              "secondary-fixed": "#d3e4fe",
-              "on-surface": "#191c1e",
-              "on-primary-fixed-variant": "#3f465c",
-              "surface-container-highest": "#e0e3e5",
-              "inverse-on-surface": "#eff1f3",
-              "on-tertiary": "#ffffff",
-              "surface-container-low": "#f2f4f6",
-              "inverse-surface": "#2d3133",
-              "surface-container-high": "#e6e8ea",
-              outline: "#76777d",
-              "primary-fixed-dim": "#bec6e0",
-              "tertiary-container": "#271901",
+              "on-secondary": "#000000",
+              "surface-tint": "#b8c3ff",
+              "error-container": "#5d1f1f",
+              "on-secondary-container": "#f3f4f6",
+              "surface-variant": "#151922",
+              "on-primary": "#000000",
+              "primary-fixed": "#b8c3ff",
+              "surface-bright": "#0f1115",
+              "surface-container": "#151922",
+              "primary-container": "#b8c3ff",
+              "on-surface-variant": "#aab2c5",
+              "on-secondary-fixed": "#000000",
+              tertiary: "#b8c3ff",
+              "on-tertiary-fixed": "#000000",
+              primary: "#b8c3ff",
+              "on-secondary-fixed-variant": "#000000",
+              "on-background": "#f3f4f6",
+              "on-error": "#000000",
+              "on-primary-container": "#000000",
+              "outline-variant": "#2a3242",
+              "secondary-container": "#1b2233",
+              "on-error-container": "#f3f4f6",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#b8c3ff",
+              secondary: "#aab2c5",
+              surface: "#0f1115",
+              "on-tertiary-container": "#000000",
+              background: "#000000",
+              "inverse-primary": "#000000",
+              "secondary-fixed": "#1b2233",
+              "on-surface": "#f3f4f6",
+              "on-primary-fixed-variant": "#000000",
+              "surface-container-highest": "#1c2230",
+              "inverse-on-surface": "#000000",
+              "on-tertiary": "#000000",
+              "surface-container-low": "#0f1115",
+              "inverse-surface": "#f3f4f6",
+              "surface-container-high": "#151922",
+              outline: "#2a3242",
+              "primary-fixed-dim": "#1b2233",
+              "tertiary-container": "#1b2233",
             },
             borderRadius: {
               DEFAULT: "0.25rem",
@@ -181,10 +158,14 @@
 
       <div class="sidebar-profile" style="margin-top: 14px">
         <div class="profile-avatar">
-          <img src="" alt="temp" />
+          <img
+            id="sidebarAvatar"
+            src="../media/css/audio/cover/nevermind-nirvana-album-cover.jpg"
+            alt="temp"
+          />
         </div>
         <div class="profile-info">
-          <span class="profile-name">zero</span>
+          <span class="profile-name" id="sidebarName">zero</span>
         </div>
       </div>
     </nav>
@@ -351,7 +332,9 @@
               >
             </div>
             <div class="space-y-4 flex-grow" id="agendaEventsList">
-              <p class="text-xs text-secondary text-center py-4">Loading events...</p>
+              <p class="text-xs text-secondary text-center py-4">
+                Loading events...
+              </p>
             </div>
           </section>
           <!-- Honeypot Analytics Card (Span 4) -->
@@ -450,17 +433,22 @@
                     data-alt="cyberpunk esc city"
                     src="https://lh3.googleusercontent.com/aida-public/AB6AXuBszwlCnU5-DdY3rD6fFquP6cHAyDwy2whwXrxLqFZmZqq3dStu1vdKsp4hKcghaESTd2zvT6EEefCcsXO9r5U31GNEDjo7cWQWZUBbbVcfSudeGe64oNNBC0ArRxOVRufHXNbRxnnLRZ4A4NObnroolX2qO8plD-D8pML7NlGmX3vtNOSHoiDcuKrfS1TUu8vQMFkEcE2DuTaMhvryXk3uxiY5mvSxR2663UBbaUEdMNHkz1gCH7bYyGdwtQ8YzDrZSWOpCNZ2JGIL"
                   />
-                  <a href="https://zero.bishop-castor.ts.net/web/" class="absolute inset-0 z-20" target="_blank" rel="noopener noreferrer">
-                  <div
-                    class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-100 group-hover:bg-black/20 transition-all"
+                  <a
+                    href="https://zero.bishop-castor.ts.net/web/"
+                    class="absolute inset-0 z-20"
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
-                    <span
-                      class="material-symbols-outlined text-white text-[48px] cursor-pointer"
-                      data-icon="play_circle"
-                      style="font-variation-settings: 'FILL' 1"
-                      >play_circle</span
+                    <div
+                      class="absolute inset-0 bg-black/40 flex items-center justify-center opacity-100 group-hover:bg-black/20 transition-all"
                     >
-                  </div>
+                      <span
+                        class="material-symbols-outlined text-white text-[48px] cursor-pointer"
+                        data-icon="play_circle"
+                        style="font-variation-settings: &quot;FILL&quot; 1"
+                        >play_circle</span
+                      >
+                    </div>
                   </a>
                 </div>
               </div>
@@ -510,18 +498,40 @@
     </main>
 
     <script>
+      // Load user settings from localStorage (set in settings.html)
+      const html = document.documentElement;
+      const sidebarName = document.getElementById("sidebarName");
+      const sidebarAvatar = document.getElementById("sidebarAvatar");
+
+      function applySettings() {
+        const settings = JSON.parse(
+          localStorage.getItem("zhou-user-settings") || "{}",
+        );
+        const theme = localStorage.getItem("theme") || "dark";
+
+        html.setAttribute("class", theme);
+        sidebarName.textContent = settings.displayName || "zero";
+        if (settings.profileImage) {
+          sidebarAvatar.src = settings.profileImage;
+        }
+      }
+
+      applySettings();
+      window.addEventListener("storage", applySettings);
+
       // Load and display upcoming events from the calendar app
       function loadAgendaEvents() {
-        const agendaList = document.getElementById('agendaEventsList');
+        const agendaList = document.getElementById("agendaEventsList");
         if (!agendaList) return;
 
         // Get events from localStorage (shared with planning app)
-        const events = localStorage.getItem('events')
-          ? JSON.parse(localStorage.getItem('events'))
+        const events = localStorage.getItem("events")
+          ? JSON.parse(localStorage.getItem("events"))
           : [];
 
         if (events.length === 0) {
-          agendaList.innerHTML = '<p class="text-xs text-secondary text-center py-4">No upcoming events</p>';
+          agendaList.innerHTML =
+            '<p class="text-xs text-secondary text-center py-4">No upcoming events</p>';
           return;
         }
 
@@ -530,8 +540,8 @@
         today.setHours(0, 0, 0, 0);
 
         // Filter for upcoming events (today and future)
-        const upcomingEvents = events.filter(event => {
-          const [day, month, year] = event.date.split('/').map(Number);
+        const upcomingEvents = events.filter((event) => {
+          const [day, month, year] = event.date.split("/").map(Number);
           const eventDate = new Date(year, month - 1, day);
           eventDate.setHours(0, 0, 0, 0);
           return eventDate >= today;
@@ -539,8 +549,8 @@
 
         // Sort by date
         upcomingEvents.sort((a, b) => {
-          const [dayA, monthA, yearA] = a.date.split('/').map(Number);
-          const [dayB, monthB, yearB] = b.date.split('/').map(Number);
+          const [dayA, monthA, yearA] = a.date.split("/").map(Number);
+          const [dayB, monthB, yearB] = b.date.split("/").map(Number);
           const dateA = new Date(yearA, monthA - 1, dayA);
           const dateB = new Date(yearB, monthB - 1, dayB);
           return dateA - dateB;
@@ -550,19 +560,24 @@
         const limitedEvents = upcomingEvents.slice(0, 5);
 
         if (limitedEvents.length === 0) {
-          agendaList.innerHTML = '<p class="text-xs text-secondary text-center py-4">No upcoming events</p>';
+          agendaList.innerHTML =
+            '<p class="text-xs text-secondary text-center py-4">No upcoming events</p>';
           return;
         }
 
         // Render events
         agendaList.innerHTML = limitedEvents
           .map((event, index) => {
-            const [day, month, year] = event.date.split('/').map(Number);
+            const [day, month, year] = event.date.split("/").map(Number);
             const eventDate = new Date(year, month - 1, day);
-            const monthName = eventDate.toLocaleDateString('en-US', { month: 'short' }).toUpperCase();
+            const monthName = eventDate
+              .toLocaleDateString("en-US", { month: "short" })
+              .toUpperCase();
             const isFirstEvent = index === 0;
-            const borderClass = isFirstEvent ? 'border-primary' : 'border-outline-variant';
-            
+            const borderClass = isFirstEvent
+              ? "border-primary"
+              : "border-outline-variant";
+
             return `
               <div class="p-4 bg-surface-container rounded-xl flex gap-4 items-center border-l-4 ${borderClass}">
                 <div class="text-center min-w-[48px]">
@@ -576,15 +591,15 @@
               </div>
             `;
           })
-          .join('');
+          .join("");
       }
 
       // Load events when page is ready
-      document.addEventListener('DOMContentLoaded', loadAgendaEvents);
-      
+      document.addEventListener("DOMContentLoaded", loadAgendaEvents);
+
       // Listen for storage changes (when events are added/deleted in the planning app)
-      window.addEventListener('storage', (e) => {
-        if (e.key === 'events') {
+      window.addEventListener("storage", (e) => {
+        if (e.key === "events") {
           loadAgendaEvents();
         }
       });

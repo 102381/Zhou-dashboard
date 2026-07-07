@@ -18,3 +18,10 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Light Mode Theme */
+html:not(.dark) .popup {
+  background: #f0f1f3;
+  color: #191c1e;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}

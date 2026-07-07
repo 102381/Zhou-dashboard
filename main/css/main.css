@@ -1,0 +1,167 @@
+ .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+      body {
+        font-family: "Atkinson Hyperlegible Next", sans-serif;
+        -webkit-font-smoothing: antialiased;
+      }
+
+      .sidebar-branding {
+        padding: 0 32px 24px;
+        margin-bottom: 24px;
+      }
+
+      .sidebar-branding h1 {
+        font-family: "Atkinson Hyperlegible Next", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+        margin-bottom: 8px;
+        color: #ffffff;
+      }
+
+      .sidebar-branding p {
+        font-size: 0.625rem;
+        text-transform: uppercase;
+        letter-spacing: 0.2em;
+        color: #666666;
+        margin-top: 4px;
+      }
+
+      body {
+        background: #000000;
+        color: #f3f4f6;
+      }
+
+      .bg-white,
+      .bg-surface-bright,
+      .bg-surface-container,
+      .bg-surface-container-low,
+      .bg-surface-container-high,
+      .bg-surface-container-lowest,
+      .bg-green-100,
+      .bg-blue-100 {
+        background: #111827 !important;
+        color: #f3f4f6 !important;
+      }
+
+      .text-secondary,
+      .text-on-surface-variant,
+      .text-gray-600,
+      .text-gray-700,
+      .text-gray-800 {
+        color: #aab2c5 !important;
+      }
+
+      .text-on-surface,
+      .text-on-background,
+      .text-gray-900 {
+        color: #f3f4f6 !important;
+      }
+
+      .border-outline-variant,
+      .border-gray-200,
+      .border-gray-300 {
+        border-color: #2a3242 !important;
+      }
+
+      .text-blue-600,
+      .text-blue-700,
+      .text-green-800 {
+        color: #b8c3ff !important;
+      }
+
+      .bg-green-100 {
+        background: #1b2233 !important;
+      }
+
+      /* Light Mode Styles */
+      html:not(.dark) {
+        --bg-primary: #f7f9fb;
+        --bg-surface: #ffffff;
+        --text-primary: #191c1e;
+        --text-secondary: #49454e;
+        --border-color: #e6e8ea;
+        --accent-color: #131b2e;
+      }
+
+      html:not(.dark) body {
+        background: #f7f9fb;
+        color: #191c1e;
+      }
+
+      html:not(.dark) .bg-white,
+      html:not(.dark) .bg-surface-bright,
+      html:not(.dark) .bg-surface-container,
+      html:not(.dark) .bg-surface-container-low,
+      html:not(.dark) .bg-surface-container-high,
+      html:not(.dark) .bg-surface-container-lowest,
+      html:not(.dark) .bg-green-100,
+      html:not(.dark) .bg-blue-100 {
+        background: #ffffff !important;
+        color: #191c1e !important;
+      }
+
+      html:not(.dark) .text-secondary,
+      html:not(.dark) .text-on-surface-variant,
+      html:not(.dark) .text-gray-600,
+      html:not(.dark) .text-gray-700,
+      html:not(.dark) .text-gray-800 {
+        color: #49454e !important;
+      }
+
+      html:not(.dark) .text-on-surface,
+      html:not(.dark) .text-on-background,
+      html:not(.dark) .text-gray-900 {
+        color: #191c1e !important;
+      }
+
+      html:not(.dark) .border-outline-variant,
+      html:not(.dark) .border-gray-200,
+      html:not(.dark) .border-gray-300 {
+        border-color: #e6e8ea !important;
+      }
+
+      html:not(.dark) .text-blue-600,
+      html:not(.dark) .text-blue-700,
+      html:not(.dark) .text-green-800 {
+        color: #131b2e !important;
+      }
+
+      html:not(.dark) .bg-green-100 {
+        background: #e8f0f5 !important;
+      }
+
+      html:not(.dark) .sidebar {
+        background: rgba(255, 255, 255, 0.96);
+        border-right: 1px solid #e6e8ea;
+      }
+
+      html:not(.dark) .sidebar-branding h1 {
+        color: #191c1e;
+      }
+
+      html:not(.dark) .sidebar-branding p {
+        color: #999999;
+      }
+
+      html:not(.dark) .profile-name {
+        color: #191c1e;
+      }
+
+      html:not(.dark) .site-nav-link {
+        color: #49454e;
+      }
+
+      html:not(.dark) .site-nav-link.active {
+        background: #131b2e;
+        color: #ffffff;
+      }
+
+      html:not(.dark) button {
+        border-color: #e6e8ea;
+      }

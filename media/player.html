@@ -1,11 +1,20 @@
 <!doctype html>
 
-<html class="light" lang="en">
+<html class="dark" lang="en">
   <head>
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>Zhou Audio Player</title>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script>
+      // Apply saved theme before page renders
+      const saved = localStorage.getItem("theme");
+      if (saved === "light") {
+        document.documentElement.setAttribute("class", "");
+      } else {
+        document.documentElement.setAttribute("class", "dark");
+      }
+    </script>
     <link
       href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap"
       rel="stylesheet"
@@ -36,8 +45,11 @@
         width: 100%;
         margin: 0 auto;
       }
+      body {
+        background: #000000;
+      }
       .album-art-shadow {
-        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
       }
       .top-header {
         background: transparent;
@@ -64,7 +76,7 @@
   background: linear-gradient(
     to right,
     #b8c3ff var(--val, 75%),
-    #c6c6cd var(--val, 75%)
+    #2a3242 var(--val, 75%)
   );
   outline: none;
   cursor: pointer;
@@ -75,7 +87,7 @@ input[type=range]#volume-slider::-webkit-slider-thumb {
   height: 14px;
   border-radius: 50%;
   background: #b8c3ff;
-  border: 2px solid #ffffff;
+  border: 2px solid #000000;
   box-shadow: 0 0 0 1.5px #b8c3ff;
   transition: transform 0.15s;
 }
@@ -83,7 +95,7 @@ input[type=range]#volume-slider::-moz-range-thumb {
   width: 14px; height: 14px;
   border-radius: 50%;
   background: #b8c3ff;
-  border: 2px solid #ffffff;
+  border: 2px solid #000000;
   box-shadow: 0 0 0 1.5px #b8c3ff;
   transition: transform 0.15s;
 }
@@ -91,6 +103,47 @@ input[type=range]#volume-slider:hover::-webkit-slider-thumb,
 input[type=range]#volume-slider:hover::-moz-range-thumb {
   transform: scale(1.25);
 }
+
+      /* Light Mode Theme */
+      html:not(.dark) body {
+        background: #f7f9fb;
+      }
+
+      html:not(.dark) input[type=range]#volume-slider {
+        background: linear-gradient(
+          to right,
+          #131b2e var(--val, 75%),
+          #e6e8ea var(--val, 75%)
+        );
+      }
+
+      html:not(.dark) input[type=range]#volume-slider::-webkit-slider-thumb {
+        background: #131b2e;
+        border: 2px solid #f7f9fb;
+        box-shadow: 0 0 0 1.5px #131b2e;
+      }
+
+      html:not(.dark) input[type=range]#volume-slider::-moz-range-thumb {
+        background: #131b2e;
+        border: 2px solid #f7f9fb;
+        box-shadow: 0 0 0 1.5px #131b2e;
+      }
+
+      html:not(.dark) input[type="range"] {
+        background: linear-gradient(
+          to right,
+          #131b2e var(--val, 75%),
+          #e6e8ea var(--val, 75%)
+        ) !important;
+      }
+
+      html:not(.dark) #song-slider {
+        accent-color: #131b2e;
+      }
+
+      html:not(.dark) #volume-slider {
+        accent-color: #131b2e;
+      }
 
      
     </style>
@@ -107,46 +160,46 @@ input[type=range]#volume-slider:hover::-moz-range-thumb {
               "secondary-fixed-dim": "#b7c8e1",
               error: "#ba1a1a",
               "surface-dim": "#d8dadc",
-              "on-secondary": "#ffffff",
-              "surface-tint": "#565e74",
-              "error-container": "#ffdad6",
-              "on-secondary-container": "#54647a",
-              "surface-variant": "#e0e3e5",
-              "on-primary": "#ffffff",
-              "primary-fixed": "#dae2fd",
-              "surface-bright": "#f7f9fb",
-              "surface-container": "#eceef0",
-              "primary-container": "#131b2e",
-              "on-surface-variant": "#45464d",
-              "on-secondary-fixed": "#0b1c30",
-              tertiary: "#000000",
-              "on-tertiary-fixed": "#271901",
-              "on-secondary-fixed-variant": "#38485d",
-              "on-background": "#191c1e",
-              "on-error": "#ffffff",
-              "on-primary-container": "#7c839b",
-              "outline-variant": "#c6c6cd",
-              "secondary-container": "#d0e1fb",
-              "on-error-container": "#93000a",
-              "surface-container-lowest": "#ffffff",
-              "tertiary-fixed": "#fcdeb5",
-              secondary: "#505f76",
-              surface: "#f7f9fb",
-              "on-tertiary-container": "#98805d",
-              background: "#f7f9fb",
-              "inverse-primary": "#bec6e0",
-              "secondary-fixed": "#e9ddff",
-              "on-surface": "#191c1e",
-              "on-primary-fixed-variant": "#3f465c",
-              "surface-container-highest": "#e0e3e5",
-              "inverse-on-surface": "#eff1f3",
-              "on-tertiary": "#ffffff",
-              "surface-container-low": "#f2f4f6",
-              "inverse-surface": "#2d3133",
-              "surface-container-high": "#e6e8ea",
-              outline: "#76777d",
-              "primary-fixed-dim": "#bec6e0",
-              "tertiary-container": "#271901",
+              "on-secondary": "#000000",
+              "surface-tint": "#b8c3ff",
+              "error-container": "#5d1f1f",
+              "on-secondary-container": "#f3f4f6",
+              "surface-variant": "#151922",
+              "on-primary": "#000000",
+              "primary-fixed": "#b8c3ff",
+              "surface-bright": "#0f1115",
+              "surface-container": "#151922",
+              "primary-container": "#b8c3ff",
+              "on-surface-variant": "#aab2c5",
+              "on-secondary-fixed": "#000000",
+              tertiary: "#b8c3ff",
+              "on-tertiary-fixed": "#000000",
+              "on-secondary-fixed-variant": "#000000",
+              "on-background": "#f3f4f6",
+              "on-error": "#000000",
+              "on-primary-container": "#000000",
+              "outline-variant": "#2a3242",
+              "secondary-container": "#1b2233",
+              "on-error-container": "#f3f4f6",
+              "surface-container-lowest": "#000000",
+              "tertiary-fixed": "#b8c3ff",
+              secondary: "#aab2c5",
+              surface: "#0f1115",
+              "on-tertiary-container": "#000000",
+              background: "#000000",
+              "inverse-primary": "#000000",
+              "secondary-fixed": "#1b2233",
+              "on-surface": "#f3f4f6",
+              "on-primary-fixed-variant": "#000000",
+              "surface-container-highest": "#1c2230",
+              "inverse-on-surface": "#000000",
+              "on-tertiary": "#000000",
+              "surface-container-low": "#0f1115",
+              "inverse-surface": "#f3f4f6",
+              "surface-container-high": "#151922",
+              outline: "#2a3242",
+              "primary-fixed-dim": "#1b2233",
+              "tertiary-container": "#1b2233",
             },
             borderRadius: {
               DEFAULT: "0.25rem",
@@ -203,12 +256,14 @@ input[type=range]#volume-slider:hover::-moz-range-thumb {
       </div>
 
       <div class="sidebar-profile" style="margin-top: 14px">
+        <a href="../profile/settings.html" class="profile-link">
         <div class="profile-avatar">
-          <img src="" alt="temp" />
+          <img id="sidebarAvatar" src="../media/css/audio/cover/nevermind-nirvana-album-cover.jpg" alt="temp" />
         </div>
         <div class="profile-info">
-          <span class="profile-name">temp</span>
+          <span class="profile-name" id="sidebarName">zero</span>
         </div>
+        </a>
       </div>
     </nav>
 
@@ -358,5 +413,25 @@ input[type=range]#volume-slider:hover::-moz-range-thumb {
       </div>
     </main>
   </body>
+  <script>
+    // Sync user settings from localStorage
+    const sidebarName = document.getElementById("sidebarName");
+    const sidebarAvatar = document.getElementById("sidebarAvatar");
+    const htmlEl = document.documentElement;
+
+    function applySyncedSettings() {
+      const settings = JSON.parse(localStorage.getItem("zhou-user-settings") || "{}");
+      const theme = localStorage.getItem("theme") || "dark";
+      
+      sidebarName.textContent = settings.displayName || "zero";
+      if (settings.profileImage) {
+        sidebarAvatar.src = settings.profileImage;
+      }
+      htmlEl.setAttribute("class", theme);
+    }
+
+    applySyncedSettings();
+    window.addEventListener("storage", applySyncedSettings);
+  </script>
   <script src="./js/player.js"></script>
 </html>

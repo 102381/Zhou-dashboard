@@ -1,13 +1,13 @@
 :root {
-  --bg: #f7f9fb;
-  --surface: rgba(255, 255, 255, 0.85);
-  --surface-soft: rgba(242, 244, 246, 0.95);
-  --text: #191c1e;
-  --muted: #5f6368;
-  --outline: #c6c6cd;
-  --accent: #131b2e;
-  --accent-soft: #b8c3ff;
-  --shadow: 0 18px 45px rgba(19, 27, 46, 0.12);
+  --bg: #000000;
+  --surface: rgba(12, 14, 18, 0.96);
+  --surface-soft: #151922;
+  --text: #f3f4f6;
+  --muted: #aab2c5;
+  --outline: #2a3242;
+  --accent: #b8c3ff;
+  --accent-soft: #1b2233;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.35);
 }
 
 * {
@@ -20,11 +20,11 @@ body {
   font-family: "Atkinson Hyperlegible Next", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top, rgba(184, 195, 255, 0.18), transparent 38%),
+    radial-gradient(circle at top, rgba(184, 195, 255, 0.07), transparent 34%),
     radial-gradient(
       circle at bottom right,
-      rgba(19, 27, 46, 0.06),
-      transparent 30%
+      rgba(184, 195, 255, 0.03),
+      transparent 26%
     ),
     var(--bg);
 }
@@ -73,7 +73,7 @@ a {
 
 .side {
   width: 256px;
-  background: rgba(242, 244, 246, 0.92);
+  background: rgba(10, 12, 16, 0.96);
   border-right: 1px solid var(--outline);
   padding: 32px 16px 24px;
   position: fixed;
@@ -125,15 +125,15 @@ a {
 }
 
 .nav a:hover {
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--text);
   transform: translateY(-1px);
 }
 
 .nav a.active {
   background: var(--accent);
-  color: #ffffff;
-  box-shadow: 0 14px 30px rgba(19, 27, 46, 0.22);
+  color: #000000;
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
 }
 
 .profile {
@@ -156,7 +156,7 @@ a {
   margin: 0 auto 24px;
   padding: 28px;
   background: var(--surface);
-  border: 1px solid rgba(198, 198, 205, 0.6);
+  border: 1px solid var(--outline);
   border-radius: 28px;
   box-shadow: var(--shadow);
 }
@@ -188,9 +188,9 @@ a {
   padding: 14px 18px;
   border-radius: 999px;
   background: var(--accent);
-  color: #ffffff;
+  color: #000000;
   font-weight: 700;
-  box-shadow: 0 10px 24px rgba(19, 27, 46, 0.2);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
 }
 
 .filters {
@@ -224,7 +224,7 @@ a {
 
 .filter-btn.active {
   background: var(--accent);
-  color: #ffffff;
+  color: #000000;
   border-color: var(--accent);
 }
 
@@ -261,7 +261,7 @@ a {
   overflow: hidden;
   border-radius: 24px;
   background: var(--surface);
-  border: 1px solid rgba(198, 198, 205, 0.65);
+  border: 1px solid var(--outline);
   box-shadow: var(--shadow);
   transition:
     transform 160ms ease,
@@ -270,13 +270,13 @@ a {
 
 .album-card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 24px 55px rgba(19, 27, 46, 0.16);
+  box-shadow: 0 24px 55px rgba(0, 0, 0, 0.34);
 }
 
 .cover {
   aspect-ratio: 1 / 1;
   width: 100%;
-  background: linear-gradient(135deg, #dfe5ff 0%, #b8c3ff 55%, #131b2e 100%);
+  background: linear-gradient(135deg, #1a2030 0%, #0f1115 70%, #000000 100%);
 }
 
 .cover img {
@@ -322,7 +322,7 @@ a {
   padding: 8px 12px;
   border-radius: 999px;
   background: var(--surface-soft);
-  color: var(--accent);
+  color: #000000;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -334,7 +334,7 @@ a {
   padding: 10px 14px;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: var(--accent);
+  color: #000000;
   font: inherit;
   font-weight: 700;
 }
@@ -410,7 +410,7 @@ a {
   height: 32px;
   border-radius: 999px;
   background: var(--surface-soft);
-  color: var(--muted);
+  color: var(--text);
   font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
@@ -424,7 +424,7 @@ a {
 
 .add-to-queue:hover {
   background: var(--accent-soft);
-  color: var(--accent);
+  color: var(--text);
   transform: scale(1.1);
 }
 
@@ -434,4 +434,29 @@ a {
   opacity: 0.6;
   cursor: default;
   transform: none;
+}
+
+/* Light Mode Theme */
+html:not(.dark) {
+  --bg: #f7f9fb;
+  --surface: #ffffff;
+  --surface-soft: #e8f0f5;
+  --text: #191c1e;
+  --muted: #49454e;
+  --outline: #e6e8ea;
+  --accent: #131b2e;
+  --accent-soft: #e8f0f5;
+  --shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+html:not(.dark) body {
+  color: #191c1e;
+  background:
+    radial-gradient(circle at top, rgba(19, 27, 46, 0.07), transparent 34%),
+    radial-gradient(
+      circle at bottom right,
+      rgba(19, 27, 46, 0.03),
+      transparent 26%
+    ),
+    #f7f9fb;
 }

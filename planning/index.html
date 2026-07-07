@@ -14,6 +14,15 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
+    <script>
+      // Apply saved theme before page renders
+      const saved = localStorage.getItem("theme");
+      if (saved === "light") {
+        document.documentElement.setAttribute("class", "");
+      } else {
+        document.documentElement.setAttribute("class", "dark");
+      }
+    </script>
   </head>
   <body>
     <!-- Main Nexus Sidebar -->
@@ -64,10 +73,10 @@
 
         <div class="sidebar-profile" style="margin-top: 14px">
           <div class="profile-avatar">
-            <img src="" alt="temp" />
+            <img id="sidebarAvatar" src="" alt="temp" />
           </div>
           <div class="profile-info">
-            <span class="profile-name">temp</span>
+            <span class="profile-name" id="sidebarName">temp</span>
           </div>
         </div>
       </div>
@@ -364,6 +373,29 @@
     </div>
 
     <div id="modalBackDrop" class="modal-backdrop"></div>
+
+    <!-- Sync user settings -->
+    <script>
+      const sidebarName = document.getElementById("sidebarName");
+      const sidebarAvatar = document.getElementById("sidebarAvatar");
+      const htmlEl = document.documentElement;
+
+      function applySyncedSettings() {
+        const settings = JSON.parse(
+          localStorage.getItem("zhou-user-settings") || "{}",
+        );
+        const theme = localStorage.getItem("theme") || "dark";
+
+        sidebarName.textContent = settings.displayName || "temp";
+        if (settings.profileImage) {
+          sidebarAvatar.src = settings.profileImage;
+        }
+        htmlEl.setAttribute("class", theme);
+      }
+
+      applySyncedSettings();
+      window.addEventListener("storage", applySyncedSettings);
+    </script>
 
     <!-- Modular Scripts -->
     <script src="./js/events.js"></script>

@@ -9,8 +9,8 @@
   display: flex;
   flex-direction: column;
   width: 256px;
-  background: #ffffff;
-  border-right: 1px solid #1c1c1c;
+  background: #0a0c10;
+  border-right: 1px solid #2a3242;
   padding: 32px 0;
   position: fixed;
   height: 100vh;
@@ -28,14 +28,14 @@
   font-weight: 700;
   letter-spacing: -0.5px;
   margin-bottom: 8px;
-  color: #ffffff;
+  color: #f3f4f6;
 }
 
 .sidebar-branding p {
   font-size: 0.625rem;
   text-transform: uppercase;
   letter-spacing: 0.2em;
-  color: #666666;
+  color: #aab2c5;
   margin-top: 4px;
 }
 
@@ -49,7 +49,7 @@
 
 .sidebar-profile {
   padding: 24px 16px;
-  border-top: 1px solid #1c1c1c;
+  border-top: 1px solid #2a3242;
   margin-top: auto;
   display: flex;
   align-items: center;
@@ -61,7 +61,7 @@
   height: 32px;
   border-radius: 50%;
   overflow: hidden;
-  background: #1c1c1c;
+  background: #151922;
   flex-shrink: 0;
 }
 
@@ -79,11 +79,11 @@
 
 .profile-name {
   font-weight: 600;
-  color: #ffffff;
+  color: #f3f4f6;
   font-size: 0.8rem;
 }
 
 .profile-plan {
-  color: #666666;
+  color: #aab2c5;
   font-size: 0.75rem;
 }
