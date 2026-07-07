@@ -1,0 +1,24 @@
+html[data-theme="light"] body {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(19, 27, 46, 0.08),
+      transparent 26%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(19, 27, 46, 0.03),
+      transparent 24%
+    ),
+    #f7f9fb;
+}
+
+html[data-theme="light"] .sidebar {
+  background: rgba(255, 255, 255, 0.96);
+  border-right: 1px solid #e6e8ea;
+}
+
+html[data-theme="light"] .site-nav-link.active {
+  background: #131b2e;
+  color: #ffffff;
+}
