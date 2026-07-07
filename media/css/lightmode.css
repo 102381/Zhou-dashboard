@@ -3,6 +3,9 @@
 html:not(.dark) body {
   background: #f7f9fb;
 }
+html:not(.dark) #song-name {
+  color: #191c1e !important;
+}
 
 html:not(.dark) input[type="range"]#volume-slider {
   background: linear-gradient(
