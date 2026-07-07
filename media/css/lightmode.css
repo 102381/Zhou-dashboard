@@ -1,0 +1,41 @@
+/* Light Mode Theme */
+@import url("./root.css");
+html:not(.dark) body {
+  background: #f7f9fb;
+}
+
+html:not(.dark) input[type="range"]#volume-slider {
+  background: linear-gradient(
+    to right,
+    #131b2e var(--val, 75%),
+    #e6e8ea var(--val, 75%)
+  );
+}
+
+html:not(.dark) input[type="range"]#volume-slider::-webkit-slider-thumb {
+  background: #131b2e;
+  border: 2px solid #f7f9fb;
+  box-shadow: 0 0 0 1.5px #131b2e;
+}
+
+html:not(.dark) input[type="range"]#volume-slider::-moz-range-thumb {
+  background: #131b2e;
+  border: 2px solid #f7f9fb;
+  box-shadow: 0 0 0 1.5px #131b2e;
+}
+
+html:not(.dark) input[type="range"] {
+  background: linear-gradient(
+    to right,
+    #131b2e var(--val, 75%),
+    #e6e8ea var(--val, 75%)
+  ) !important;
+}
+
+html:not(.dark) #song-slider {
+  accent-color: #131b2e;
+}
+
+html:not(.dark) #volume-slider {
+  accent-color: #131b2e;
+}

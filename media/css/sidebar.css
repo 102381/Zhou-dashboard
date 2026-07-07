@@ -1,13 +1,5 @@
 /* sidebar */
-
-:root {
-  --nexus-accent: #b8c3ff;
-  --nexus-text: #f3f4f6;
-  --nexus-muted: #aab2c5;
-  --nexus-outline: #2a3242;
-  --nexus-surface-soft: #151922;
-}
-
+@import url("./root.css");
 .sidebar {
   display: flex;
   flex-direction: column;
