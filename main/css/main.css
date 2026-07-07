@@ -1,167 +1,219 @@
- .material-symbols-outlined {
-        font-variation-settings:
-          "FILL" 0,
-          "wght" 400,
-          "GRAD" 0,
-          "opsz" 24;
-      }
-      body {
-        font-family: "Atkinson Hyperlegible Next", sans-serif;
-        -webkit-font-smoothing: antialiased;
-      }
+:root {
+  --nexus-bg: #101218;
+}
 
-      .sidebar-branding {
-        padding: 0 32px 24px;
-        margin-bottom: 24px;
-      }
+html:not(.dark) {
+  --nexus-bg: #f7f9fb;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
 
-      .sidebar-branding h1 {
-        font-family: "Atkinson Hyperlegible Next", sans-serif;
-        font-size: 1.25rem;
-        font-weight: 700;
-        letter-spacing: -0.5px;
-        margin-bottom: 8px;
-        color: #ffffff;
-      }
+body {
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
 
-      .sidebar-branding p {
-        font-size: 0.625rem;
-        text-transform: uppercase;
-        letter-spacing: 0.2em;
-        color: #666666;
-        margin-top: 4px;
-      }
+/* .sidebar-branding {
+  padding: 0 32px 24px;
+  margin-bottom: 24px;
+}
 
-      body {
-        background: #000000;
-        color: #f3f4f6;
-      }
+.sidebar-branding h1 {
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+  color: #ffffff;
+}
 
-      .bg-white,
-      .bg-surface-bright,
-      .bg-surface-container,
-      .bg-surface-container-low,
-      .bg-surface-container-high,
-      .bg-surface-container-lowest,
-      .bg-green-100,
-      .bg-blue-100 {
-        background: #111827 !important;
-        color: #f3f4f6 !important;
-      }
+.sidebar-branding p {
+  font-size: 0.625rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #666666;
+  margin-top: 4px;
+} */
 
-      .text-secondary,
-      .text-on-surface-variant,
-      .text-gray-600,
-      .text-gray-700,
-      .text-gray-800 {
-        color: #aab2c5 !important;
-      }
+body {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(184, 195, 255, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(184, 195, 255, 0.04),
+      transparent 24%
+    ),
+    var(--nexus-bg);
+  color: #f3f4f6;
+  position: relative;
+  overflow-x: hidden;
+}
+.sidebar {
+  background: none !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.04),
+    transparent 38%
+  );
+  opacity: 0.25;
+  z-index: 0;
+}
 
-      .text-on-surface,
-      .text-on-background,
-      .text-gray-900 {
-        color: #f3f4f6 !important;
-      }
+body > * {
+  position: relative;
+  z-index: 1;
+}
 
-      .border-outline-variant,
-      .border-gray-200,
-      .border-gray-300 {
-        border-color: #2a3242 !important;
-      }
+.bg-white,
+.bg-surface-bright,
+.bg-surface-container,
+.bg-surface-container-low,
+.bg-surface-container-high,
+.bg-surface-container-lowest,
+.bg-green-100,
+.bg-blue-100 {
+  background: #111827 !important;
+  color: #f3f4f6 !important;
+}
 
-      .text-blue-600,
-      .text-blue-700,
-      .text-green-800 {
-        color: #b8c3ff !important;
-      }
+.text-secondary,
+.text-on-surface-variant,
+.text-gray-600,
+.text-gray-700,
+.text-gray-800 {
+  color: #aab2c5 !important;
+}
 
-      .bg-green-100 {
-        background: #1b2233 !important;
-      }
+.text-on-surface,
+.text-on-background,
+.text-gray-900 {
+  color: #f3f4f6 !important;
+}
 
-      /* Light Mode Styles */
-      html:not(.dark) {
-        --bg-primary: #f7f9fb;
-        --bg-surface: #ffffff;
-        --text-primary: #191c1e;
-        --text-secondary: #49454e;
-        --border-color: #e6e8ea;
-        --accent-color: #131b2e;
-      }
+.border-outline-variant,
+.border-gray-200,
+.border-gray-300 {
+  border-color: #2a3242 !important;
+}
 
-      html:not(.dark) body {
-        background: #f7f9fb;
-        color: #191c1e;
-      }
+.text-blue-600,
+.text-blue-700,
+.text-green-800 {
+  color: #b8c3ff !important;
+}
 
-      html:not(.dark) .bg-white,
-      html:not(.dark) .bg-surface-bright,
-      html:not(.dark) .bg-surface-container,
-      html:not(.dark) .bg-surface-container-low,
-      html:not(.dark) .bg-surface-container-high,
-      html:not(.dark) .bg-surface-container-lowest,
-      html:not(.dark) .bg-green-100,
-      html:not(.dark) .bg-blue-100 {
-        background: #ffffff !important;
-        color: #191c1e !important;
-      }
+.bg-green-100 {
+  background: #1b2233 !important;
+}
 
-      html:not(.dark) .text-secondary,
-      html:not(.dark) .text-on-surface-variant,
-      html:not(.dark) .text-gray-600,
-      html:not(.dark) .text-gray-700,
-      html:not(.dark) .text-gray-800 {
-        color: #49454e !important;
-      }
+/* Light Mode Styles */
+html:not(.dark) {
+  --bg-primary: #f7f9fb;
+  --bg-surface: #ffffff;
+  --text-primary: #191c1e;
+  --text-secondary: #49454e;
+  --border-color: #e6e8ea;
+  --accent-color: #131b2e;
+}
 
-      html:not(.dark) .text-on-surface,
-      html:not(.dark) .text-on-background,
-      html:not(.dark) .text-gray-900 {
-        color: #191c1e !important;
-      }
+html:not(.dark) body {
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(19, 27, 46, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(19, 27, 46, 0.03),
+      transparent 24%
+    ),
+    #f7f9fb;
+  color: #191c1e;
+}
 
-      html:not(.dark) .border-outline-variant,
-      html:not(.dark) .border-gray-200,
-      html:not(.dark) .border-gray-300 {
-        border-color: #e6e8ea !important;
-      }
+html:not(.dark) .bg-white,
+html:not(.dark) .bg-surface-bright,
+html:not(.dark) .bg-surface-container,
+html:not(.dark) .bg-surface-container-low,
+html:not(.dark) .bg-surface-container-high,
+html:not(.dark) .bg-surface-container-lowest,
+html:not(.dark) .bg-green-100,
+html:not(.dark) .bg-blue-100 {
+  background: #ffffff !important;
+  color: #191c1e !important;
+}
 
-      html:not(.dark) .text-blue-600,
-      html:not(.dark) .text-blue-700,
-      html:not(.dark) .text-green-800 {
-        color: #131b2e !important;
-      }
+html:not(.dark) .text-secondary,
+html:not(.dark) .text-on-surface-variant,
+html:not(.dark) .text-gray-600,
+html:not(.dark) .text-gray-700,
+html:not(.dark) .text-gray-800 {
+  color: #49454e !important;
+}
 
-      html:not(.dark) .bg-green-100 {
-        background: #e8f0f5 !important;
-      }
+html:not(.dark) .text-on-surface,
+html:not(.dark) .text-on-background,
+html:not(.dark) .text-gray-900 {
+  color: #191c1e !important;
+}
 
-      html:not(.dark) .sidebar {
-        background: rgba(255, 255, 255, 0.96);
-        border-right: 1px solid #e6e8ea;
-      }
+html:not(.dark) .border-outline-variant,
+html:not(.dark) .border-gray-200,
+html:not(.dark) .border-gray-300 {
+  border-color: #e6e8ea !important;
+}
 
-      html:not(.dark) .sidebar-branding h1 {
-        color: #191c1e;
-      }
+html:not(.dark) .text-blue-600,
+html:not(.dark) .text-blue-700,
+html:not(.dark) .text-green-800 {
+  color: #131b2e !important;
+}
 
-      html:not(.dark) .sidebar-branding p {
-        color: #999999;
-      }
+html:not(.dark) .bg-green-100 {
+  background: #e8f0f5 !important;
+}
 
-      html:not(.dark) .profile-name {
-        color: #191c1e;
-      }
+html:not(.dark) .sidebar {
+  background: rgba(255, 255, 255, 0.96);
+  border-right: 1px solid #e6e8ea;
+}
 
-      html:not(.dark) .site-nav-link {
-        color: #49454e;
-      }
+html:not(.dark) .sidebar-branding h1 {
+  color: #191c1e;
+}
 
-      html:not(.dark) .site-nav-link.active {
-        background: #131b2e;
-        color: #ffffff;
-      }
+html:not(.dark) .sidebar-branding p {
+  color: #999999;
+}
 
-      html:not(.dark) button {
-        border-color: #e6e8ea;
-      }
+html:not(.dark) .profile-name {
+  color: #191c1e;
+}
+
+html:not(.dark) .site-nav-link {
+  color: #49454e;
+}
+
+html:not(.dark) .site-nav-link.active {
+  background: #131b2e;
+  color: #ffffff;
+}
+
+html:not(.dark) button {
+  border-color: #e6e8ea;
+}

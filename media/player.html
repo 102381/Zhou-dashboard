@@ -26,6 +26,25 @@
     <link rel="stylesheet" href="./css/sidebar.css" />
     <link rel="stylesheet" href="./css/popup.css">
     <style>
+      :root {
+  --nexus-bg: #101218;
+}
+
+html:not(.dark) {
+  --nexus-bg: #f7f9fb;
+}
+.material-symbols-outlined {
+  font-variation-settings:
+    "FILL" 0,
+    "wght" 400,
+    "GRAD" 0,
+    "opsz" 24;
+}
+
+body {
+  font-family: "Atkinson Hyperlegible Next", sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
       .material-symbols-outlined {
         font-variation-settings:
           "FILL" 0,
@@ -46,7 +65,7 @@
         margin: 0 auto;
       }
       body {
-        background: #000000;
+        background: var(--nexus-bg);
       }
       .album-art-shadow {
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
@@ -228,7 +247,7 @@ input[type=range]#volume-slider:hover::-moz-range-thumb {
     </script>
   </head>
   <body
-    class="bg-background text-on-surface font-body-md selection:bg-primary selection:text-primary-container min-h-screen radial-blur"
+    class="text-on-surface font-body-md selection:bg-primary selection:text-primary-container min-h-screen radial-blur"
   >
     <!-- Main Nexus Sidebar -->
     <nav class="sidebar">
@@ -365,7 +384,7 @@ input[type=range]#volume-slider:hover::-moz-range-thumb {
             >
           </button>
           <button
-            class="w-20 h-20 bg-primary text-primary-container rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all"
+            class="w-20 h-20 bg-primary  rounded-full flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-all"
             id="playpause-button"
           >
             <span

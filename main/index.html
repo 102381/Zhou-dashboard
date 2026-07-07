@@ -130,7 +130,7 @@
       };
     </script>
   </head>
-  <body class="bg-background text-on-background min-h-screen">
+  <body class="text-on-background min-h-screen">
     <!-- Main Nexus Sidebar -->
     <nav class="sidebar">
       <div class="sidebar-branding">
@@ -138,11 +138,7 @@
         <p>v0.1.0 Active</p>
       </div>
       <div class="sidebar-nav site-nav">
-        <a
-          href="../main/index.html"
-          class="site-nav-link active"
-          aria-current="page"
-        >
+        <a href="../main/index.html" class="site-nav-link active">
           <span class="material-symbols-outlined">dashboard</span>
           <span>Dashboard</span>
         </a>
@@ -150,26 +146,26 @@
           <span class="material-symbols-outlined">calendar_today</span>
           <span>Agenda</span>
         </a>
-        <a href="../media/player.html" class="site-nav-link">
+        <a
+          href="../media/player.html"
+          class="site-nav-link"
+          aria-current="page"
+        >
           <span class="material-symbols-outlined">play_circle</span>
           <span>Media</span>
         </a>
       </div>
-
+        <a href="../profile/settings.html" class="profile-link">
       <div class="sidebar-profile" style="margin-top: 14px">
         <div class="profile-avatar">
-          <img
-            id="sidebarAvatar"
-            src="../media/css/audio/cover/nevermind-nirvana-album-cover.jpg"
-            alt="temp"
-          />
+          <img id="sidebarAvatar" src="../media/css/audio/cover/nevermind-nirvana-album-cover.jpg" alt="temp" />
         </div>
         <div class="profile-info">
-          <span class="profile-name" id="sidebarName">zero</span>
+          <span class="profile-name" id="sidebarName">user</span>
         </div>
       </div>
     </nav>
-
+    </a>
     <!-- Main Canvas -->
     <main class="ml-64 pt-24 p-8 min-h-screen">
       <div class="max-w-7xl mx-auto">

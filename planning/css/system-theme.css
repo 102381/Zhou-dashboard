@@ -85,7 +85,6 @@ body > * {
   display: none;
   flex-direction: column;
   width: 256px;
-  background: var(--nexus-bg);
   border-right: 1px solid var(--nexus-outline);
   padding: 32px 16px 24px;
   position: fixed;
@@ -101,7 +100,6 @@ body > * {
   width: 256px;
   margin: 24px 0 24px 24px;
   padding: 24px 16px;
-  background: rgba(10, 12, 16, 0.96);
   border: 1px solid var(--nexus-outline);
   border-radius: 28px;
   box-shadow: var(--nexus-shadow);

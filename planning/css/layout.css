@@ -9,7 +9,6 @@
   display: flex;
   flex-direction: column;
   width: 256px;
-  background: #0a0c10;
   border-right: 1px solid #2a3242;
   padding: 32px 0;
   position: fixed;
