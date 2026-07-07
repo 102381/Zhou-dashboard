@@ -23,8 +23,8 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./css/sidebar.css" />
-    <link rel="stylesheet" href="./css/popup.css">
+    <link rel="stylesheet" href="./css/main.css" />
+
     <style>
       :root {
   --nexus-bg: #101218;
@@ -65,8 +65,43 @@ body {
         margin: 0 auto;
       }
       body {
-        background: var(--nexus-bg);
-      }
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(184, 195, 255, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at bottom right,
+      rgba(184, 195, 255, 0.04),
+      transparent 24%
+    ),
+    var(--nexus-bg);
+  color: #f3f4f6;
+  position: relative;
+  overflow-x: hidden;
+}
+.sidebar {
+  background: none !important;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at 50% 0%,
+    rgba(255, 255, 255, 0.04),
+    transparent 38%
+  );
+  opacity: 0.25;
+  z-index: 0;
+}
+
+body > * {
+  position: relative;
+  z-index: 1;
+}
       .album-art-shadow {
         box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.45);
       }
@@ -431,25 +466,6 @@ input[type=range]#volume-slider:hover::-moz-range-thumb {
       </div>
     </main>
   </body>
-  <script>
-    // Sync user settings from localStorage
-    const sidebarName = document.getElementById("sidebarName");
-    const sidebarAvatar = document.getElementById("sidebarAvatar");
-    const htmlEl = document.documentElement;
-
-    function applySyncedSettings() {
-      const settings = JSON.parse(localStorage.getItem("zhou-user-settings") || "{}");
-      const theme = localStorage.getItem("theme") || "dark";
-      
-      sidebarName.textContent = settings.displayName || "zero";
-      if (settings.profileImage) {
-        sidebarAvatar.src = settings.profileImage;
-      }
-      htmlEl.setAttribute("class", theme);
-    }
-
-    applySyncedSettings();
-    window.addEventListener("storage", applySyncedSettings);
-  </script>
+ <script src="./js/sidebar.js"></script>
   <script src="./js/player.js"></script>
 </html>
