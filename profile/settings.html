@@ -1,0 +1,678 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zhou User Settings</title>
+    <link rel="icon" type="image/x-icon" href="../main/css/images/zhou.svg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:wght@400;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #000000;
+        --surface: rgba(12, 14, 18, 0.96);
+        --surface-strong: #0f1115;
+        --text: #f3f4f6;
+        --muted: #aab2c5;
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #b8c3ff;
+        --accent-soft: #1b2233;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      html[data-theme="dark"] {
+        --bg: #101f41;
+        --surface: rgba(12, 14, 18, 0.96);
+        --surface-strong: #0f1115;
+        --text: #f3f4f6;
+        --muted: #aab2c5;
+        --line: rgba(255, 255, 255, 0.08);
+        --accent: #b8c3ff;
+        --accent-soft: #1b2233;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        min-height: 100%;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Atkinson Hyperlegible Next", sans-serif;
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(184, 195, 255, 0.08),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(184, 195, 255, 0.03),
+            transparent 24%
+          ),
+          var(--bg);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background: radial-gradient(
+          circle at 50% 0%,
+          rgba(255, 255, 255, 0.04),
+          transparent 34%
+        );
+        opacity: 0.22;
+      }
+
+      body > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .material-symbols-outlined {
+        font-variation-settings:
+          "FILL" 0,
+          "wght" 400,
+          "GRAD" 0,
+          "opsz" 24;
+      }
+
+      .sidebar {
+        display: flex;
+        flex-direction: column;
+        width: 256px;
+        background: rgba(10, 12, 16, 0.96);
+        border-right: 1px solid var(--line);
+        padding: 32px 16px 24px;
+        position: fixed;
+        inset: 0 auto 0 0;
+        height: 100vh;
+        overflow-y: auto;
+        backdrop-filter: blur(18px);
+      }
+
+      .sidebar-branding {
+        padding: 0 16px 24px;
+        margin-bottom: 16px;
+      }
+
+      .sidebar-branding h1 {
+        margin: 0;
+        font-size: 1.75rem;
+        line-height: 1.1;
+        font-weight: 800;
+        letter-spacing: -0.03em;
+        color: var(--text);
+      }
+
+      .sidebar-branding p {
+        margin: 4px 0 0;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .sidebar-nav {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        padding: 0 16px;
+        flex-grow: 1;
+      }
+
+      .site-nav {
+        margin-bottom: 16px;
+      }
+
+      .site-nav-link {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        padding: 16px;
+        border-radius: 12px;
+        color: var(--muted);
+        text-decoration: none;
+        font-weight: 700;
+        transition:
+          background-color 160ms ease,
+          color 160ms ease,
+          transform 160ms ease,
+          box-shadow 160ms ease;
+      }
+
+      .site-nav-link span:last-child {
+        font-size: 0.75rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .site-nav-link:hover {
+        background: rgba(255, 255, 255, 0.06);
+        color: var(--text);
+        transform: translateY(-1px);
+      }
+
+      .site-nav-link.active {
+        background: var(--accent);
+        color: #000000;
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .site-nav-link.active:hover {
+        color: #000000;
+      }
+
+      .site-nav-link .material-symbols-outlined {
+        font-size: 22px;
+      }
+
+      .sidebar-profile {
+        padding: 20px 16px 0;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        margin-top: 16px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        color: var(--muted);
+      }
+
+      .profile-avatar {
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        overflow: hidden;
+        background: var(--surface-strong);
+        flex-shrink: 0;
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .profile-avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .profile-info {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .profile-name {
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--text);
+      }
+
+      .page {
+        margin-left: 256px;
+        min-height: 100vh;
+        padding: 40px;
+      }
+
+      .wrap {
+        max-width: 980px;
+        margin: 0 auto;
+      }
+
+      .header {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: end;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 12px;
+        padding: 8px 12px;
+        border: 1px solid var(--line);
+        border-radius: 9999px;
+        background: var(--surface);
+        color: var(--muted);
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h2 {
+        margin: 0;
+        font-size: clamp(2rem, 4vw, 3.25rem);
+        line-height: 1.05;
+        letter-spacing: -0.04em;
+      }
+
+      .subtitle {
+        max-width: 60ch;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }
+
+      .panel-grid {
+        display: grid;
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: 24px;
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(14px);
+      }
+
+      .card-inner {
+        padding: 24px;
+      }
+
+      .card h3 {
+        margin: 0 0 14px;
+        font-size: 1rem;
+        font-weight: 800;
+        letter-spacing: -0.02em;
+      }
+
+      .card p {
+        margin: 0;
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .settings-list {
+        display: grid;
+        gap: 14px;
+        margin-top: 18px;
+      }
+
+      .setting-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 16px 0;
+        border-top: 1px solid var(--line);
+      }
+
+      .setting-row:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .setting-copy {
+        display: grid;
+        gap: 4px;
+      }
+
+      .setting-copy strong {
+        font-size: 0.95rem;
+      }
+
+      .setting-copy span {
+        color: var(--muted);
+        font-size: 0.92rem;
+        line-height: 1.5;
+      }
+
+      .field-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .field {
+        display: grid;
+        gap: 8px;
+      }
+
+      .field label {
+        font-size: 0.8rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      .field input {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        padding: 14px 16px;
+        font: inherit;
+        color: var(--text);
+        background: var(--surface-strong);
+        outline: none;
+      }
+
+      .field input:focus {
+        border-color: var(--accent-soft);
+        box-shadow: 0 0 0 4px rgba(184, 195, 255, 0.2);
+      }
+
+      .toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .toggle input {
+        appearance: none;
+        width: 54px;
+        height: 32px;
+        border-radius: 9999px;
+        background: rgba(95, 99, 104, 0.2);
+        border: 1px solid var(--line);
+        position: relative;
+        cursor: pointer;
+        transition:
+          background-color 160ms ease,
+          border-color 160ms ease;
+      }
+
+      .toggle input::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 4px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: var(--surface-strong);
+        transform: translateY(-50%);
+        transition:
+          transform 160ms ease,
+          background-color 160ms ease;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      }
+
+      .toggle input:checked {
+        background: var(--accent);
+        border-color: var(--accent);
+      }
+
+      .toggle input:checked::after {
+        transform: translate(22px, -50%);
+      }
+
+      .status {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-top: 16px;
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: #6fcf97;
+      }
+
+      .actions {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 18px;
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        border: 0;
+        border-radius: 14px;
+        min-height: 48px;
+        padding: 0 18px;
+        font: inherit;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .button-primary {
+        color: #000000;
+        background: var(--accent);
+      }
+
+      .button-secondary {
+        color: var(--text);
+        background: transparent;
+        border: 1px solid var(--line);
+      }
+
+      .button:hover,
+      .site-nav-link:hover {
+        transform: translateY(-1px);
+      }
+
+      .footer-note {
+        margin-top: 14px;
+        color: var(--muted);
+        font-size: 0.88rem;
+      }
+
+      @media (max-width: 960px) {
+        .sidebar {
+          position: static;
+          width: auto;
+          height: auto;
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .page {
+          margin-left: 0;
+          padding: 20px;
+        }
+
+        .field-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      html[data-theme="light"] {
+        --bg: #f7f9fb;
+        --surface: #ffffff;
+        --surface-strong: #f0f1f3;
+        --text: #191c1e;
+        --muted: #49454e;
+        --line: rgba(0, 0, 0, 0.08);
+        --accent: #131b2e;
+        --accent-soft: #e8f0f5;
+        --shadow: 0 24px 60px rgba(0, 0, 0, 0.08);
+      }
+
+      html[data-theme="light"] body {
+        background:
+          radial-gradient(
+            circle at top left,
+            rgba(19, 27, 46, 0.08),
+            transparent 26%
+          ),
+          radial-gradient(
+            circle at bottom right,
+            rgba(19, 27, 46, 0.03),
+            transparent 24%
+          ),
+          #f7f9fb;
+      }
+
+      html[data-theme="light"] .sidebar {
+        background: rgba(255, 255, 255, 0.96);
+        border-right: 1px solid #e6e8ea;
+      }
+
+      html[data-theme="light"] .site-nav-link.active {
+        background: #131b2e;
+        color: #ffffff;
+      }
+
+      @media (max-width: 640px) {
+        .setting-row {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .header {
+          margin-bottom: 20px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <nav class="sidebar">
+      <div class="sidebar-branding">
+        <h1>MAIN TERMINAL</h1>
+        <p>v0.1.0 Active</p>
+      </div>
+      <div class="sidebar-nav site-nav">
+        <a href="../main/index.html" class="site-nav-link">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span>Dashboard</span>
+        </a>
+        <a href="../planning/index.html" class="site-nav-link">
+          <span class="material-symbols-outlined">calendar_today</span>
+          <span>Agenda</span>
+        </a>
+        <a href="../media/player.html" class="site-nav-link">
+          <span class="material-symbols-outlined">play_circle</span>
+          <span>Media</span>
+        </a>
+      </div>
+
+      <div class="sidebar-profile">
+        <div class="profile-avatar">
+          <img
+            src="../media/css/audio/cover/nevermind-nirvana-album-cover.jpg"
+            alt="User avatar"
+          />
+        </div>
+        <div class="profile-info">
+          <span class="profile-name" id="sidebarName">zero</span>
+        </div>
+      </div>
+    </nav>
+
+    <main class="page">
+      <div class="wrap">
+        <section class="header">
+          <div>
+            <div class="eyebrow">
+              <span class="material-symbols-outlined">settings</span>
+              User settings
+            </div>
+            <h2>Personal controls</h2>
+            <p class="subtitle">
+              Update the profile details you want to keep local and switch the
+              interface between light and dark mode.
+            </p>
+          </div>
+        </section>
+
+        <section class="panel-grid">
+          <article class="card">
+            <div class="card-inner">
+              <h3>Profile</h3>
+              <p>Basic details used across the dashboard.</p>
+              <div class="settings-list">
+                <div class="field">
+                  <label for="profileImage">Profile image</label>
+                  <input
+                    id="profileImage"
+                    type="url"
+                    placeholder="https://example.com/image.jpg"
+                  />
+                </div>
+                <div class="field-grid">
+                  <div class="field">
+                    <label for="displayName">Display name</label>
+                    <input id="displayName" type="text" value="zero" />
+                  </div>
+                  <div class="field">
+                    <label for="email">Email</label>
+                    <input id="email" type="email" value="zero@example.com" />
+                  </div>
+                </div>
+                <div class="status">
+                  <span class="dot"></span>
+                  Saved locally in this browser
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <h3>Appearance</h3>
+              <p>Keep the page light or switch to dark mode.</p>
+              <div class="setting-row">
+                <div class="setting-copy">
+                  <strong>Dark mode</strong>
+                  <span>Turn on a darker interface for lower light use.</span>
+                </div>
+                <label class="toggle" for="darkModeToggle">
+                  <input id="darkModeToggle" type="checkbox" />
+                </label>
+              </div>
+              <div class="footer-note" id="themeNote">
+                Theme is set to light mode.
+              </div>
+            </div>
+          </article>
+
+          <article class="card">
+            <div class="card-inner">
+              <h3>Quick actions</h3>
+              <p>Small controls for the page state.</p>
+              <div class="actions">
+                <button
+                  class="button button-primary"
+                  id="resetThemeBtn"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined">restart_alt</span>
+                  Reset theme
+                </button>
+                <button
+                  class="button button-secondary"
+                  id="clearProfileBtn"
+                  type="button"
+                >
+                  <span class="material-symbols-outlined">delete</span>
+                  Clear profile fields
+                </button>
+              </div>
+            </div>
+          </article>
+        </section>
+      </div>
+    </main>
+  </body>
+  <script src="./js/settings.js"></script>
+  <script src="./js/darkmode.js"></script>
+</html>
