@@ -98,9 +98,6 @@ function loadAgendaEvents() {
     .join("");
 }
 
-// Load events when page is ready
-document.addEventListener("DOMContentLoaded", loadAgendaEvents);
-
 // Listen for storage changes (when events are added/deleted in the planning app)
 window.addEventListener("storage", (e) => {
   if (e.key === "events") {
