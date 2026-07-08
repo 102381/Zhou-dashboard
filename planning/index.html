@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
       rel="stylesheet"
     />
-    <script src="../darkmode-universal/darkmode-universal.js"></script>
+    <script src="../universal/darkmode-universal.js"></script>
   </head>
   <body>
     <!-- Main Nexus Sidebar -->
@@ -368,27 +368,7 @@
     <div id="modalBackDrop" class="modal-backdrop"></div>
 
     <!-- Sync user settings -->
-    <script>
-      const sidebarName = document.getElementById("sidebarName");
-      const sidebarAvatar = document.getElementById("sidebarAvatar");
-      const htmlEl = document.documentElement;
-
-      function applySyncedSettings() {
-        const settings = JSON.parse(
-          localStorage.getItem("zhou-user-settings") || "{}",
-        );
-        const theme = localStorage.getItem("theme") || "dark";
-
-        sidebarName.textContent = settings.displayName || "temp";
-        if (settings.profileImage) {
-          sidebarAvatar.src = settings.profileImage;
-        }
-        htmlEl.setAttribute("class", theme);
-      }
-
-      applySyncedSettings();
-      window.addEventListener("storage", applySyncedSettings);
-    </script>
+    <script src="../universal/user-settings.js"></script>
 
     <!-- Modular Scripts -->
     <script src="./js/events.js"></script>
