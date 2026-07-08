@@ -1,6 +1,7 @@
 body {
   font-family: "Atkinson Hyperlegible Next", sans-serif;
   -webkit-font-smoothing: antialiased;
+  text-transform: capitalize;
 }
 .material-symbols-outlined {
   font-variation-settings:
@@ -78,6 +79,10 @@ body > * {
   z-index: 40;
   backdrop-filter: none;
 }
+#next-button,
+#prev-button {
+  color: #aab2c5;
+}
 
 input[type="range"]#volume-slider {
   -webkit-appearance: none;
@@ -114,3 +119,11 @@ input[type="range"]#volume-slider:hover::-moz-range-thumb {
 #song-slider {
   background-color: #837e7e54 !important;
 }
+/* #album-title {
+  color: #000000;
+}
+#album-songs li {
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  background-color: #b8c3ff42;
+} */

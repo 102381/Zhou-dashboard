@@ -1,4 +1,5 @@
 /* Light Mode Theme */
+
 @import url("./root.css");
 html:not(.dark) body {
   background: #f7f9fb;
@@ -25,4 +26,14 @@ html:not(.dark) #song-slider {
 
 html:not(.dark) #volume-slider {
   accent-color: #131b2e;
+}
+
+html:not(.dark) #album-songs li {
+  color: #808ca8;
+  font-weight: bold;
+  background-color: #b8c3ff42;
+}
+
+html:not(.dark) #album-title {
+  color: #aab2c5;
 }

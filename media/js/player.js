@@ -251,16 +251,16 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   if (nextBtn) {
-  nextBtn.addEventListener("click", function () {
-    if (shuffleMode) {
-      currentSongIndex = Math.floor(Math.random() * songs.length);
-    } else {
-      if (currentSongIndex == songs.length - 1) return;
-      currentSongIndex++;
-    }
-    updateSong();
-  });
-}
+    nextBtn.addEventListener("click", function () {
+      if (shuffleMode) {
+        currentSongIndex = Math.floor(Math.random() * songs.length);
+      } else {
+        if (currentSongIndex == songs.length - 1) return;
+        currentSongIndex++;
+      }
+      updateSong();
+    });
+  }
 
   if (playpauseBtn) {
     playpauseBtn.addEventListener("click", function () {
@@ -348,8 +348,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     songs.forEach(function (song, index) {
       const li = document.createElement("li");
-      li.className =
-        "flex items-center justify-between p-3 bg-surface-container-low rounded";
+      li.className = "flex items-center justify-between p-3 rounded list";
       li.draggable = true; // Make draggable
 
       if (index === currentSongIndex) {
