@@ -1,5 +1,5 @@
 :root {
-  --bg: #000000;
+  --bg: #101218;
   --surface: rgba(12, 14, 18, 0.96);
   --surface-soft: #151922;
   --text: #f3f4f6;
@@ -20,11 +20,15 @@ body {
   font-family: "Atkinson Hyperlegible Next", sans-serif;
   color: var(--text);
   background:
-    radial-gradient(circle at top, rgba(184, 195, 255, 0.07), transparent 34%),
+    radial-gradient(
+      circle at top left,
+      rgba(184, 195, 255, 0.08),
+      transparent 28%
+    ),
     radial-gradient(
       circle at bottom right,
-      rgba(184, 195, 255, 0.03),
-      transparent 26%
+      rgba(184, 195, 255, 0.04),
+      transparent 24%
     ),
     var(--bg);
 }
@@ -73,7 +77,6 @@ a {
 
 .side {
   width: 256px;
-  background: rgba(10, 12, 16, 0.96);
   border-right: 1px solid var(--outline);
   padding: 32px 16px 24px;
   position: fixed;
@@ -117,7 +120,7 @@ a {
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: var(--muted);
+  color: var(--text);
   transition:
     background-color 160ms ease,
     color 160ms ease,
@@ -132,7 +135,7 @@ a {
 
 .nav a.active {
   background: var(--accent);
-  color: #000000;
+  color: #e2e2e2;
   box-shadow: 0 14px 30px rgba(0, 0, 0, 0.3);
 }
 
@@ -322,7 +325,6 @@ a {
   padding: 8px 12px;
   border-radius: 999px;
   background: var(--surface-soft);
-  color: #000000;
   font-size: 0.78rem;
   font-weight: 700;
   text-transform: uppercase;
@@ -334,7 +336,6 @@ a {
   padding: 10px 14px;
   border-radius: 999px;
   background: var(--accent-soft);
-  color: #000000;
   font: inherit;
   font-weight: 700;
 }
@@ -452,11 +453,15 @@ html:not(.dark) {
 html:not(.dark) body {
   color: #191c1e;
   background:
-    radial-gradient(circle at top, rgba(19, 27, 46, 0.07), transparent 34%),
+    radial-gradient(
+      circle at top left,
+      rgba(19, 27, 46, 0.08),
+      transparent 28%
+    ),
     radial-gradient(
       circle at bottom right,
       rgba(19, 27, 46, 0.03),
-      transparent 26%
+      transparent 24%
     ),
     #f7f9fb;
 }

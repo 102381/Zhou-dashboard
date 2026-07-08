@@ -47,7 +47,6 @@ function applyProfile(name, email) {
 const stored = loadSettings();
 displayNameInput.value = stored.displayName || "zero";
 emailInput.value = stored.email || "zero@example.com";
-profileImageInput.value = stored.profileImage || "";
 sidebarName.textContent = stored.displayName || "zero";
 
 // Load theme from localStorage or use stored setting
