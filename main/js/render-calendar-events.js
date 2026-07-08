@@ -21,7 +21,7 @@ function applySettings() {
 document.addEventListener("DOMContentLoaded", () => {
   applySettings();
 
-  if (typeof initializeVactionsAndEvents === "function"){
+  if (typeof initializeVactionsAndEvents === "function") {
     initializeVactionsAndEvents();
   }
 
