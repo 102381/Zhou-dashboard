@@ -9,13 +9,13 @@ const albums = [
     songs: [
       {
         image: "../css/audio/cover/luther-cover.jpg",
-        name: "luther",
+        name: "Luther",
         artist: "Kendrick Lamar",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
       {
         image: "../css/audio/cover/luther-cover.jpg",
-        name: "i",
+        name: "Afterglow",
         artist: "Kendrick Lamar",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
@@ -24,15 +24,15 @@ const albums = [
   {
     songs: [
       {
-        image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
-        name: "dani california",
-        artist: "Red hot Chili peppers",
+        image: "../css/audio/cover/RHCP-mother's-milk-cover.webp",
+        name: "Dani California",
+        artist: "Red Hot Chili Peppers",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
       {
-        image: "./css/audio/cover/RHCP-mother's-milk-cover.webp",
-        name: "under the bridge",
-        artist: "Red hot Chili peppers",
+        image: "../css/audio/cover/RHCP-mother's-milk-cover.webp",
+        name: "Under the Bridge",
+        artist: "Red Hot Chili Peppers",
         Audio: "../css/audio/luther-kendrick.mp3",
       },
     ],
@@ -41,13 +41,13 @@ const albums = [
     songs: [
       {
         image: "../css/audio/cover/Cave-world-viagra-boys-cover.png",
-        name: "cave world",
+        name: "Cave World",
         artist: "Viagra Boys",
         Audio: "../css/audio/viagra-boys.mp3",
       },
       {
         image: "../css/audio/cover/Cave-world-viagra-boys-cover.png",
-        name: "release",
+        name: "Release",
         artist: "Viagra Boys",
         Audio: "../css/audio/viagra-boys.mp3",
       },
