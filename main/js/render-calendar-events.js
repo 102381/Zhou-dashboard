@@ -18,8 +18,10 @@ function applySettings() {
   }
 }
 
-applySettings();
-window.addEventListener("storage", applySettings);
+document.addEventListener("DOMContentLoaded", () => {
+  applySettings();
+  loadAgendaEvents();
+});
 
 // Load and display upcoming events from the calendar app
 function loadAgendaEvents() {
