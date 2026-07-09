@@ -10,7 +10,7 @@ function addEvent(date, title, eventType = {}) {
   events.push({
     date: date,
     title: title,
-                categoryId: null,
+    categoryId: null,
     ...eventType,
   });
   saveEventsToStorage();
@@ -57,9 +57,14 @@ function clearEvents() {
 async function fetchNetherlandsHolidays() {
   try {
     const response = await fetch(
-      "https://openholidaysapi.org/PublicHolidays?countryIsoCode=NL&languageIsoCode=en"
+      "https://openholidaysapi.org/PublicHolidays?countryIsoCode=NL&languageIsoCode=en&validFrom=2026-01-01&validTo=2026-12-31",
     );
     const holidays = await response.json();
+
+    if (!Array.isArray(holidays)) {
+      console.error("Unexpected holidays response:", holidays);
+      return;
+    }
 
     holidays.forEach((holiday) => {
       const date = new Date(holiday.date);
@@ -68,7 +73,7 @@ async function fetchNetherlandsHolidays() {
       const year = date.getFullYear();
 
       const exists = events.some(
-        (e) => e.date === `${day}/${month}/${year}` && e.title === holiday.name
+        (e) => e.date === `${day}/${month}/${year}` && e.title === holiday.name,
       );
       if (!exists) {
         addEvent(`${day}/${month}/${year}`, holiday.name, { isHoliday: true });
